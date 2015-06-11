@@ -1,5 +1,7 @@
-CC= gcc
-CFLAGS=  -O2 -Wall
+#CC= gcc
+CC= emcc
+#CFLAGS=  -O2 -Wall
+CFLAGS=  -O2
 #CFLAGS=  -g -Wall
 OBJS = altaz.o angles.o annuab.o constel.o deflec.o deltat.o diurab.o \
 diurpx.o dms.o epsiln.o fk4fk5.o kepler.o kfiles.o lightt.o lonlat.o \
@@ -11,7 +13,7 @@ sat404.o ura404.o nep404.o plu404.o mlr404.o mlat404.o
 INCS = kep.h plantbl.h
 
 aa: aa.o $(OBJS) $(INCS)
-	$(CC) -o aa aa.o $(OBJS) -lm
+	$(CC) -o aa.js aa.o $(OBJS) -lm
 #	coff2exe aa
 
 aa.o: aa.c $(INCS)

@@ -327,7 +327,7 @@ struct orbit *elobject;	/* pointer to orbital elements of object */
 
 /* Main program starts here.
  */
-int main()
+int main(int argc, char* argv[])
 {
 int i;
 
@@ -338,20 +338,17 @@ kinit();
 loop:
 
 prtflg = 1;
-printf( "Enter starting date of tabulation\n" );
-JD = zgetdate(); /* date */
-JD += gethms();	/* time of day */
-update(); /* find UT and ET */
-printf( "Julian day %.7f, delta T = %.2f s\n", JD, deltat_value );
-
-getnum( "Enter interval between tabulations in days", &djd, dblfmt );
-getnum( "Number of tabulations to display", &ntab, intfmt );
-if( ntab <= 0 )
-	ntab = 1;
 
 loop1:
-getnum( "Planet number 0-9 or 88 to read star, 99 to read orbit",
-	&objnum, intfmt );
+
+sscanf(argv[1], "%lf", &JD);
+printf("Julian date %f\n", JD);
+sscanf(argv[2], "%d", &objnum);
+printf("Object number %d\n", objnum);
+
+update();
+djd = 1.0;
+ntab = 1;
 
 switch(objnum)
 	{
@@ -388,7 +385,7 @@ switch(objnum)
 			break;
 	default:
 operr:		printf( "Operator error.\n" );
-		goto loop;
+		exit(0);
 	}
 
 if( elobject == (struct orbit *)&fstar )
@@ -415,7 +412,6 @@ for( i=0; i<ntab; i++ )
 	printf( "\n" );
 	JD += djd;
 	}
-goto loop;
 
 #ifdef _MSC_VER
 return 0;
