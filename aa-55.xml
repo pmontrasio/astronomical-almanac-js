@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<XML_DIZ_INFO>
+<MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>1.15</MASTER_PAD_VERSION>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+</MASTER_PAD_VERSION_INFO>
+<Company_Info>
+        <Company_Name>Stephen L. Moshier</Company_Name>
+        <Address_1>30 Frost Street</Address_1>
+        <Address_2 />
+        <City_Town>Cambridge</City_Town>
+        <State_Province>MA</State_Province>
+        <Zip_Postal_Code>02140</Zip_Postal_Code>
+        <Country>USA</Country>
+        <Company_WebSite_URL>http://www.moshier.net/index.html</Company_WebSite_URL>
+<Contact_Info>
+        <Author_First_Name>Steve</Author_First_Name>
+        <Author_Last_Name>Moshier</Author_Last_Name>
+        <Author_Email>steve@moshier.net</Author_Email>
+        <Contact_First_Name />
+        <Contact_Last_Name />
+        <Contact_Email />
+    </Contact_Info>
+<Support_Info>
+        <Sales_Email />
+        <Support_Email />
+        <General_Email />
+        <Sales_Phone />
+        <Support_Phone />
+        <General_Phone />
+        <Fax_Phone />
+    </Support_Info>
+</Company_Info>
+<Program_Info>
+        <Program_Name>aa-55.zip</Program_Name>
+        <Program_Version>5.5</Program_Version>
+        <Program_Release_Month>01</Program_Release_Month>
+        <Program_Release_Day>27</Program_Release_Day>
+        <Program_Release_Year>2002</Program_Release_Year>
+        <Program_Cost_Dollars>0</Program_Cost_Dollars>
+        <Program_Cost_Other_Code />
+        <Program_Cost_Other />
+        <Program_Type>Freeware</Program_Type>
+        <Program_Release_Status>Minor Update</Program_Release_Status>
+        <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+        <Program_OS_Support>Win 3.1x,Win95,Win98,WinME,WinNT 3.x,WinNT 4.x,WinXP,Windows2000,Unix,Linux,MS-DOS,OS/2,OS/2 Warp,OpenVMS</Program_OS_Support>
+        <Program_Language />
+<File_Info>
+        <Filename_Versioned>aa-55.zip</Filename_Versioned>
+        <Filename_Previous>aa-54.zip</Filename_Previous>
+        <Filename_Generic>aa.zip</Filename_Generic>
+        <Filename_Long>aa.zip</Filename_Long>
+        <File_Size_Bytes>382591</File_Size_Bytes>
+        <File_Size_K>374</File_Size_K>
+        <File_Size_MB>0.37</File_Size_MB>
+    </File_Info>
+<Expire_Info>
+        <Has_Expire_Info>N</Has_Expire_Info>
+        <Expire_Count />
+        <Expire_Based_On>Days</Expire_Based_On>
+        <Expire_Other_Info />
+        <Expire_Month />
+        <Expire_Day />
+        <Expire_Year />
+    </Expire_Info>
+        <Program_Change_Info>Improved rise and set time calculation</Program_Change_Info>
+        <Program_Specific_Category>Education</Program_Specific_Category>
+        <Program_Categories>astronomy</Program_Categories>
+        <Program_System_Requirements />
+        <Includes_JAVA_VM>N</Includes_JAVA_VM>
+        <Includes_VB_Runtime>N</Includes_VB_Runtime>
+        <Includes_DirectX>N</Includes_DirectX>
+</Program_Info>
+<Program_Descriptions>
+<English>
+        <Keywords>ephemerides,planets,moon,sun,sunrise,moonrise,moon phase</Keywords>
+        <Char_Desc_45>Self-contained ephemeris calculator, C source</Char_Desc_45>
+        <Char_Desc_80 />
+        <Char_Desc_250 />
+        <Char_Desc_450 />
+        <Char_Desc_2000>This program computes the orbital positions of planetary bodies and performs rigorous coordinate reductions to apparent geocentric and topocentric place (local altitude and azimuth).
+It also reduces star catalogue positions given in either the FK4 or FK5 system. The program follows the rigorous algorithms for reduction of celestial coordinates exactly as laid out in current editions of the Astronomical Almanac. Source code listings in C language are supplied.
+
+Command input to aa.exe is by single line responses to programmed prompts. The program requests date, time, and which of a menu of things to do.  Menu item 0 is the Sun, 3 is the
+Moon.  The other values 1-9 are planets; 99 opens an orbit catalogue file; 88 opens a star catalogue.
+
+Several methods of calculating the positions of the planets have been provided for in the program source code.  These range in accuracy from a built-in computation using perturbation formulae to a solution from precise orbital elements that you supply from
+an almanac. The program uses as a default a set of trigonometric expansions for the position of the Earth and planets.  These have been adjusted to match the Jet Propulsion Laboratory&apos;s DE404 Long Ephemeris (1995) with a precision ranging from about 0.1&quot; for the Earth to 1&quot; for Pluto. The adjustment was carried out on the interval from 3000 B.C. to 3000 A.D. for the outer planets.  The adjustment for the inner planets is strictly valid only from 1350 B.C. to 3000 A.D., but may be used to 3000 B.C. with some loss of precision. The Moon&apos;s position is calculated by a modified version of the lunar theory of Chapront-Touze&apos; and Chapront.  This has a precision of 0.5 arc second relative to DE404 for all dates between 1369 B.C. and 3000 A.D.
+
+Build scripts for the program are supplied for the following software systems: Microsoft Visual C,  16-bit MSC 6, Borland C (4, 5, turbo),  VMS, and generic unix or linux.</Char_Desc_2000>
+</English>
+</Program_Descriptions>
+<Web_Info>
+<Application_URLs>
+        <Application_Info_URL>http://www.moshier.net/aadoc.html</Application_Info_URL>
+        <Application_Order_URL />
+        <Application_Screenshot_URL />
+        <Application_Icon_URL />
+        <Application_XML_File_URL />
+    </Application_URLs>
+<Download_URLs>
+        <Primary_Download_URL>http://www.moshier.net/aa-55.zip</Primary_Download_URL>
+        <Secondary_Download_URL />
+        <Additional_Download_URL_1 />
+        <Additional_Download_URL_2 />
+    </Download_URLs>
+</Web_Info>
+<Permissions>
+        <Distribution_Permissions />
+        <EULA />
+</Permissions>
+</XML_DIZ_INFO>

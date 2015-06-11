@@ -1,0 +1,521 @@
+
+                    AA.ARC v5.5
+
+   This program computes the orbital positions of planetary
+bodies and performs rigorous coordinate reductions to apparent
+geocentric and topocentric place (local altitude and azimuth).
+It also reduces star catalogue positions given in either the FK4
+or FK5 system.  Most of the algorithms employed are from The
+Astronomical Almanac (AA) published by the U.S. Government
+Printing Office.
+   Source code listings in C language are supplied in the file
+aa.arc.  The file aaexe.arc contains an IBM PC executable
+version.
+
+              Reduction of Celestial Coordinates
+
+   aa.exe follows the rigorous algorithms for reduction of
+celestial coordinates exactly as laid out in current editions of
+the Astronomical Almanac.  The reduction to apparent geocentric
+place has been checked by a special version of the program (aa200)
+that takes planetary positions directly from the Jet Propulsion
+Laboratory DE200 numerical integration of the solar system. The
+results agree exactly with the Astronomical Almanac tables from
+1987 onward (earlier Almanacs used slightly different reduction
+methods).
+   Certain computations, such as the correction for nutation,
+are not given explicitly in the AA but are referenced there. In
+these cases the program performs the full computations that are
+used to construct the Almanac tables (see the references at the
+end of this document).
+
+
+              Running the Program
+
+   Command input to aa.exe is by single line responses to
+programmed prompts. The program requests date, time, and which
+of a menu of things to do.  Menu item 0 is the Sun, 3 is the
+Moon.  The other values 1-9 are planets; 99 opens an orbit
+catalogue file; 88 opens a star catalogue. Each prompt indicates
+the last response you entered; this will be kept if you enter
+just a carriage return.
+    Input can also be redirected to come from an ASCII file.  For example,
+invoking the program by "aa <command.txt >answer.txt" reads commands
+from the file command.txt and writes answers to answer.txt.  Menu
+item -1 causes the program to exit gracefully, closing the output
+file.
+   Entering line 0 for a star catalogue causes a jump back to the
+top of the program.
+
+ 
+             Initialization
+       
+  The following items will be read in automatically from a disc file
+named aa.ini, if one is provided.  The file contains one ASCII
+string number per line so is easily edited.  A sample initialization
+file is supplied.
+
+Terrestrial longitude of observer, degrees East of Greenwich
+Geodetic latitude of observer (program calculates geocentric latitude)
+Height above sea level, meters
+Atmospheric temperature, degrees Centigrade
+Atmospheric pressure, millibars
+Input time type: 1 = TDT, 2 = UT, 0 = TDT set equal to UT
+Value to use for deltaT, seconds; if 0 then the program will compute it.
+
+
+              Orbit Computations
+
+   Several methods of calculating the positions of the planets
+have been provided for in the program source code.  These range
+in accuracy from a built-in computation using perturbation formulae
+to a solution from precise orbital elements that you supply from
+an almanac.
+   The program uses as a default a set of trigonometric
+expansions for the position of the Earth and planets.  These have
+been adjusted to match the Jet Propulsion Laboratory's DE404 Long
+Ephemeris (1995) with a precision ranging from about 0.1" for the
+Earth to 1" for Pluto. The adjustment was carried out on the
+interval from 3000 B.C. to 3000 A.D. for the outer planets.  The
+adjustment for the inner planets is strictly valid only from 1350
+B.C. to 3000 A.D., but may be used to 3000 B.C. with some loss of
+precision.  See "readme.404" for additional information.  The true
+accuracy of positions calculated for prehistoric or future dates
+is of course unknown.
+   The Moon's position is calculated by a modified version of the
+lunar theory of Chapront-Touze' and Chapront.  This has a precision
+of 0.5 arc second relative to DE404 for all dates between
+1369 B.C. and 3000 A.D.  The real position of the Moon in ancient
+times is not actually known this accurately, due to uncertainty
+in the tidal acceleration of the Moon's orbit.
+
+   In the absence of an interpolated polynomial ephemeris such
+as the DE200, the highest accuracy for current planetary
+positions is achieved by using the heliocentric orbital elements
+that are published in the Astronomical Almanac. If precise
+orbital elements are provided for the desired epoch then the
+apparent place should be found to agree very closely with
+Almanac tabulations.
+   Entering 99 for the planet number generates a prompt for the
+name of a file containing human-readable ASCII strings specifying
+the elements of orbits. The items in the specification are
+(see also the example file orbit.cat):
+
+   First line of entry:
+epoch of orbital elements (Julian date)
+inclination
+longitude of the ascending node
+argument of the perihelion
+mean distance (semimajor axis) in au
+daily motion
+
+   Second line of entry:
+eccentricity
+mean anomaly
+epoch of equinox and ecliptic, Julian date
+visual magnitude B(1,0) at 1AU from earth and sun
+equatorial semidiameter at 1au, arc seconds
+name of the object, up to 15 characters
+
+
+Angles in the above are in degrees except as noted.  Several
+sample orbits are supplied in the file orbit.cat.  If you read
+in an orbit named "Earth" the program will install the Earth
+orbit, then loop back and ask for an orbit number again.
+  The entry for daily motion is optional.  It will be calculated
+by the program if it is set equal to 0.0 in your catalogue.
+Almanac values of daily motion recognize the nonzero mass of the
+orbiting planet; the program's calculation will assume the mass
+is zero.
+  Mean distance, for an elliptical orbit, is the length of the
+semi-major axis of the ellipse. If the eccentricity is given to
+be 1.0, the orbit is parabolic and the "mean distance" item is
+taken to be the perihelion distance.  Similarly a hyperbolic
+orbit has eccentricity > 1.0 and "mean distance" is again
+interpreted to mean perihelion distance.  In both these cases,
+the "epoch" is the perihelion date, and the mean anomaly is
+set to 0.0 in your catalogue.
+  Elliptical cometary orbits are usually catalogued in terms of
+perihelion distance also, but you must convert this to mean
+distance to be understood by the program. Use the formula
+
+  mean distance = perihelion distance / (1 - eccentricity)
+
+to calculate the value to be entered in your catalogue for an
+elliptical orbit.
+  The epoch of the orbital elements refers particularly to the
+date to which the given mean anomaly applies.  Published data
+for comets often give the time of perihelion passage as a
+calendar date and fraction of a day in Ephemeris Time.  To
+translate this into a Julian date for your catalogue entry, run
+aa.exe, type in the published date and decimal fraction of a
+day, and note the displayed Julian date. This is the correct
+Julian Ephemeris Date of the epoch for your catalogue entry.
+Example (Sky & Telescope, March 1991, page 297): Comet Levy
+1990c had a perihelion date given as 1990 Oct 24.68664 ET.  As
+you are prompted separately for the year, month, and day, enter
+1990, 10, 24.68664 into the program. This date and fraction
+translates to JED 2448189.18664.  For comparison purposes, note
+that published ephemerides for comets usually give astrometric
+positions, not apparent positions.
+
+
+              Ephemeris Time and Other Time Scales
+
+   Exercise care about time scales when comparing results against
+an almanac.  The orbit program assumes input date is Ephemeris
+Time (ET or TDT).  Topocentric altitude and azimuth are
+calculated from Universal Time (UT).  The program converts
+between the two as required, but you must indicate whether your
+input entry is TDT or UT.  This is done by the entry for input
+time type in aa.ini.  If you are comparing positions against
+almanac values, you probably want TDT.  If you are looking up at
+the sky, you probably want UT.  Ephemeris transit times can be
+obtained by declaring TDT = UT.  The adjustment for deltaT = ET
+minus UT is accurate for the years 1620 through 2011, as the
+complete tabulation from the Astronomical Almanac is included in
+the program. Outside this range of years, approximate formulas
+are used to estimate deltaT.  These formulas are based on
+analyses of eclipse records going back to ancient times
+(Stephenson and Houlden, 1986; Borkowski, 1988) but they do not
+predict future values very accurately.  For precise calculations,
+you should update the table in deltat.c from the current year's
+Almanac. Note the civil time of day is UTC, which is adjusted by
+integral leap seconds to be within 0.9 second of UT.
+
+   Updated deltaT values and predictions can be obtained from this
+network archive: http://maia.usno.navy.mil .
+See the file deltat.c for additional information.
+In addition, the IAU has adopted several other definitions of
+time, but this program does not distinguish among them.  The
+International Earth Rotation Service is in charge of UT. Precise
+data on Earth rotation and orientation are published in the IERS
+bulletins, available at the IERS computer site www.iers.org as well
+as at the usno site.
+
+
+
+              Rise and Set Times
+
+   Each calculation of the time of local rising, meridian transit, and
+setting includes a first order correction for the motion in right
+ascension and declination of the object between the entered input time
+and the time of the event.  Even so, the calculation has to be
+iterated, or repeated with successively closer estimates of the event
+time.  In view of the first order correction, the iteration has a
+second-order convergence characteristic and arrives at a precise
+result in just two or three steps.  On the other hand, the technique
+used is unstable for nearly-circumpolar objects, such as the Moon
+observed at high latitudes.  Thus a failure to report rise and set
+times does not necessarily mean that there was no event.  When this
+technique cannot find a rise or set event, the program resorts to a
+search strategy to detect events in a near midnight-sun situation.
+
+   The program reports the transit that is nearest to the input time.
+Rise and set times ordinarily precede and follow the transit.  Check
+the date displayed next to the rise, set, or transit time to be sure
+the results are for the desired date and not for the previous or next
+calendar day.  For the Sun and Moon, rise and set times are for the
+upper limb of the disc; but the indicated topocentric altitude always
+refers to the center of the disc.  The computed event times include
+the effects of diurnal aberration and parallax.
+
+   Age of the Moon, in days from the nearest Quarter, also has a
+correction for orbital motion, but does not get the benefit of
+iterative improvement and may be off by 0.1 day (the stated Quarter is
+always correct, however). The estimated time can be made much more
+precise by entering the input date and time of day to be near the time
+of the event.  In other words, the rigorous calculation requires
+iterating on the time; in this case the program does not do so
+automatically, hence if you want maximum accuracy you must do the
+iteration by hand.
+
+
+
+              Ocean Tides
+
+   The time of high tide is easy to estimate with an accuracy of a few
+minutes.  The tide occurs slightly ahead of the local meridian transit
+of the Moon.  The time difference between tide and transit does not
+vary much at a fixed location.  You can calibrate this difference for
+your location by checking the local newspaper for tide times and
+subtracting off the time of the meridian transit.  Then the tides on
+any other date bear the same time offsets to the transit on that date.
+
+    Predicting the height of the tide is much more difficult.
+The calculations are about as complicated as planetary theory.
+
+
+
+              Stars
+
+   Positions and proper motions of the 57 navigational stars
+were taken from the Fifth Fundamental Catalogue (FK5). They are
+in the file star.cat.  For all of these, the program's output of
+astrometric position agreed with the 1986 AA to the precision of
+the AA tabulation (an arc second).  The same is true for 1950
+FK4 positions taken from the SAO catalogue.  The program agrees
+to 0.01 arcsec with worked examples presented in the AA. Spot checks
+against Apparent Places of Fundamental Stars confirm the mean
+place agreement to <0.1 arcsec.  The APFS uses an older nutation
+series, so direct comparison of apparent place is difficult. 
+The program incorporates the complete IAU Theory of Nutation
+(1980).  Items for the Messier catalogue, messier.cat, are from
+either the AA or Sky Catalogue 2000.
+   To compute a star's apparent position, its motion since the
+catalogue epoch is taken into account as well as the
+changes due to precession of the equatorial coordinate system.
+Star catalogue files have the following data structure.  Each
+star entry occupies one line of ASCII characters.  Numbers can
+be in any usual decimal computer format and are separated from
+each other by one or more spaces. From the beginning of the
+line, the parameters are
+
+Epoch of catalogue coordinates and equinox
+Right ascension, hours
+Right ascension, minutes
+Right ascension, seconds
+Declination, degrees
+Declination, minutes
+Declination, seconds
+Proper motion in R.A., s/century
+Proper motion in Dec., arcsec/century
+Radial velocity, km/s
+Distance, parsecs
+Visual magnitude
+Object name
+
+For example, the line
+
+2000 02 31 48.704  89 15 50.72 19.877 -1.52 -17.0 0.0070 2.02 alUMi(Polaris)
+
+has the following interpretation:
+
+J2000.0      ;Epoch of coordinates, equator, and equinox
+2h 31m 48.704s    ;Right Ascension
+89deg 15' 50.72''   ;Declination
+19.877       ;proper motion in R.A., s/century
+-1.52        ;proper motion in Dec., arcsec/century
+-17.0        ;radial velocity, km/s
+0.007        ;parallax, arcsec
+2.02         ;magnitude
+alUMi(Polaris)    ;abbreviated name for alpha Ursae Minoris (Polaris)
+
+   Standard abbreviations for 88 constellation names are
+expanded into spelled-out form (see constel.c). The program
+accepts two types of catalogue coordinates.  If the epoch is
+given as 1950, the entire entry is interpreted as an FK4 item. 
+The program then automatically converts the data to the FK5
+system.  All other epochs are interpreted as being in the FK5
+system.
+   Note that catalogue (and AA) star coordinates are referred to
+the center of the solar system, whereas the program displays the
+correct geocentric direction of the object.  The maximum
+difference is 0.8 arcsec in the case of alpha Centauri.
+
+
+
+              Corrections Not Implemented
+
+   Several adjustments are not included.  In general, the Sun is
+assumed incorrectly to be at the center of the solar system.
+Since the orbit parameters are heliocentric, the main
+discrepancy is a tiny change in the annual aberration on the
+order of 0.01 arcsec. The difference between TDT and TDB (Terrestrial
+versus Solar System barycentric time) is ignored.  The
+topocentric correction for polar motion of the Earth is also
+ignored.  If you need these corrections, then you should probably
+be using the companion program AA200, which reads planetary
+positions directly from the JPL ephemeris tapes.
+
+
+              Precession
+
+   Since adoption of the 1976 IAU precession constant, improved
+techniques have revealed that a correction of about 0.3 arcsec per
+century is required.  This program uses the value recommended
+by Williams (1994), in part because it is more compatible with
+ephemerides computed from DE403 or DE404.  DE403 values are also
+used for the obliquity of the equator and the sidereal time.
+
+
+              Software Notes
+
+    A C macro __STDC__, if defined nonzero, will get function
+prototypes from the file protos.h.  Some compilers demand the
+protoypes but do not define __STDC__.   Some other compilers do
+not know what a prototype is.  _MSC_VER is used to recognize
+Microsoft C and insert "far" into some declarations; perhaps
+other MSDOS compilers would benefit from this too.  On a few
+systems "char" is unsigned by default; that may have a bad effect
+in the file gplan.c.
+
+    Besides aa.c, the main programs conjunct.c and moonrise.c are
+provided as examples of other ways to use the collection of
+ephemeris subroutines.  Setting the global variable "prtflg"
+to zero turns off the printouts; thus you can run a calculation
+and print out whatever you want after it is done.
+
+
+- Stephen L. Moshier, November, 1987
+moshier@na-net.ornl.gov
+Version 5.4e: December, 1998
+
+
+              Disc Files
+
+	Build Scripts
+makefile       Unix or Linux make file
+unix.mak
+msvc2008       Microsoft Visual Studio 2008 build script
+msvc6.zip      Archive containing Microsoft Visual C v.6 makefiles
+msvc5.zip      Archive containing Microsoft Visual C v.5 makefiles
+aa_msc6.mak    Old Microsoft C MSDOS make file
+aa.rsp         Auxiliary to aa_msc6.mak
+bc4.zip        Archive containing Borland C version 4 makefiles
+bc5.zip        Archive containing Borland C version 5 makefiles
+aa.prj         Borland Turbo C project file (Thanks to Dominic Scolaro.)
+bcb5.zip       Borland Codebuilder files (Thanks to Luiz Borges.)
+vms.zip        Archive containing DEC VAX VMS makefiles
+descrip.mms    VAX make file (MMS)
+aa.opt         Auxiliary to descrip.mms
+
+	Executables
+aa.ini         Initialization file - edit this to reflect your location
+aa.exe         Executable program for IBM PC MSDOS
+messier.cat    Star catalogue of the Messier objects
+orbit.cat      Orbit catalogue with example comets, asteroids, etc.
+star.cat       Star catalogue of FK5 navigational stars
+aa.que         Test questions (say: aa <aa.que >test.ans).
+aa.ans         Answers to test questions (not necessarily true, but
+                what the program says)
+
+	Source Code
+aa.c           Main program, keyboard commands
+	       (See below for other main programs.)
+altaz.c        Apparent geocentric to local topocentric place
+angles.c       Angles and sides of triangle in three dimensions
+annuab.c       Annual aberration
+constel.c      Expand constellation name abbreviations
+deflec.c       Deflection of light due to Sun's gravity
+deltat.c       Ephemeris Time minus Universal Time
+diurab.c       Diurnal aberration
+diurpx.c       Diurnal parallax
+dms.c          Time and date conversions and display
+epsiln.c       Obliquity of the ecliptic
+fk4fk5.c       FK4 to FK5 star catalogue conversion
+kepler.c       Solve hyperbolic, parabolic, or elliptical Keplerian orbits
+kfiles.c       System dependent disc file I/O to read catalogues
+lightt.c       Correction for light time
+lonlat.c       Convert equatorial coordinates to ecliptic polar coordinates
+nutate.c       IAU nutation series
+precess.c      Precession of the equinox and ecliptic
+refrac.c       Correction for atmospheric refraction
+rplanet.c      Main reduction subroutine for planets
+rstar.c        Main reduction subroutine for stars
+sidrlt.c       Sidereal time
+sun.c          Main reduction subroutine for the position of the Sun
+trnsit.c       Transit of the local meridian
+vearth.c       Estimated velocity vector of the Earth
+zatan2.c       Quadrant correct arctangent with result from 0 to 2pi
+kep.h          Include file for orbit and other data structures
+planet.h       Include file for planetary perturbation routines
+moon.c         Computation of the Moon's geometric position
+domoon.c       Reduction of the Moon's position to apparent place
+gplan.c        Computation of planetary positions using mer404.c,...,plu404.c
+ear404.c       Ecliptic polar coordinates of the Earth
+jup404.c       Ecliptic polar coordinates of Jupiter
+mar404.c       Ecliptic polar coordinates of Mars
+mer404.c       Ecliptic polar coordinates of Mercury
+nep404.c       Ecliptic polar coordinates of Neptune
+plu404.c       Ecliptic polar coordinates of Pluto
+sat404.c       Ecliptic polar coordinates of Saturn
+ura404.c       Ecliptic polar coordinates of Uranus
+ven404.c       Ecliptic polar coordinates of Venus
+
+conjunct.c     This is a separate main program that can be used to
+               search for events such as new moon dates, solstices, etc.
+
+moonrise.c     Another separate main program, prints a table of lunar 
+               rise, transit, and set times.
+
+
+              References
+
+Nautical Almanac Office, U. S. Naval Observatory, _Astronomical
+Almanac for the Year 1986_, U. S. Government Printing Office,
+1985.
+
+Nautical Almanac Office, U. S. Naval Observatory, _Almanac for
+Computers, 1986_, U. S. Government Printing Office
+
+Meeus, Jean, _Astronomical Formulae for Calculators_, 3rd ed.,
+Willmann-Bell, Inc., 1985.
+
+Moulton, F. R., _An Introduction to Celestial Mechanics_, 2nd ed.,
+Macmillan, 1914 (Dover reprint, 1970)
+
+Taff, L. G., _Celestial Mechanics, A Computational Guide for the
+Practitioner_, Wiley, 1985
+
+Newcomb, S., _Tables of the Four Inner Planets, Astronomical
+Papers Prepared for the Use of the American Ephemeris and Nautical
+Almanac_, Vol. VI.  Bureau of Equipment, Navy Department,
+Washington, 1898
+
+Lieske, J. H., T. Lederle, W. Fricke, and B. Morando,
+"Expressions for the Precession Quantities Based upon the IAU
+(1976) System of Astronomical Constants,"  Astronomy and
+Astrophysics 58, 1-16 (1977).
+
+Laskar, J., "Secular terms of classical planetary theories
+using the results of general theory," Astronomy and Astrophysics
+157, 59070 (1986).
+
+Bretagnon, P. and G. Francou, "Planetary theories in rectangular
+and spherical variables. VSOP87 solutions," Astronomy and
+Astrophysics 202, 309-315 (1988).
+
+Bretagnon, P. and Simon, J.-L., _Planetary Programs and Tables
+from -4000 to +2800_, Willmann-Bell, 1986
+
+Seidelmann, P. K., et al., "Summary of 1980 IAU Theory of Nutation
+(Final Report of the IAU Working Group on Nutation)" in
+Transactions of the IAU Vol. XVIII A, Reports on Astronomy,
+P. A. Wayman, ed.; D. Reidel Pub. Co., 1982.
+
+"Nutation and the Earth's Rotation", I.A.U. Symposium No. 78,
+May, 1977, page 256. I.A.U., 1980.
+
+Woolard, E.W., "A redevelopment of the theory of nutation",
+The Astronomical Journal, 58, 1-3 (1953).
+
+Morrison, L. V. and F. R. Stephenson, "Sun and Planetary System"
+vol 96,73 eds. W. Fricke, G. Teleki, Reidel, Dordrecht (1982)
+
+Stephenson, F. R., and M. A. Houlden, _Atlas of Historical
+Eclipse Maps_, Cambridge U. Press, 1986
+
+Borkowski, K. M., "ELP2000-85 and the Dynamical Time
+- Universal Time relation," Astronomy and Astrophysics
+205, L8-L10 (1988)
+
+M. Chapront-Touze' and J. Chapront, "ELP2000-85: a semi-analytical
+lunar ephemeris adequate for historical times," Astronomy and
+Astrophysics 190, 342-352 (1988).
+
+S. L. Moshier, "Comparison of a 7000-year lunar ephemeris with
+analytical theory," Astronomy and Astrophysics 262, 613-616 (1992)
+
+J. Chapront, "Representation of planetary ephemerides by frequency
+analysis.  Application to the five outer planets,"  Astronomy and
+Astrophysics Suppl. Ser. 109, 181-192 (1994)
+
+J. L. Simon, P. Bretagnon, J. Chapront, M. Chapront-Touze', G. Francou,
+and J. Laskar, "Numerical Expressions for precession formulae and
+mean elements for the Moon and the planets," Astronomy and Astrophysics
+282, 663-683 (1994)
+
+James G. Williams, "Contributions to the Earth's obliquity rate,
+precession, and nutation,"  Astronomical Journal 108, 711-724 (1994)
+

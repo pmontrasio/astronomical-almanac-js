@@ -1,0 +1,380 @@
+
+	Steve Moshier's Ephemeris Program v5.6
+
+Planetary and lunar positions approximate DE404.
+Terrestrial east longitude -71.1300 deg
+geocentric latitude 42.0785 deg
+Earth radius 0.99849
+temperature 12.0 C
+pressure 1010 mb
+Input time is TDT.
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (0) ? Minutes (0) ? Seconds (0.000000) ? 1986 January 1 Wednesday 16h 46m 05.129s  UT
+1986 January 1 Wednesday 16h 47m 00.000s  TDT
+Julian day 2446432.1993056, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (0) ? 
+                   The Sun
+
+JD 2446432.20,  1986 January 1 Wednesday 16h 46m 05.129s  UT
+1986 January 1 Wednesday 16h 47m 00.000s  TDT
+ecliptic long  280d 59' 11.39"   lat    0d 00' 00.45"   rad 9.832795E-01
+light time 8.1777m,  aberration dRA 1.503s dDec 1.74"
+nutation dRA -0.629s dDec -7.61"
+Sgr Sagittarii.    Apparent:  R.A.  18h 47m 45.266s  Dec.  - 22d 59' 20.49"  
+Apparent longitude 280.978 deg
+Local apparent sidereal time  18h 45m 43.315s  
+diurnal aberration dRA 0.017s dDec 0.00"
+diurnal parallax dRA 0.004s dDec -8.10"
+atmospheric refraction 0.035 deg  dRA -0.065s dDec 125.16"
+Topocentric:  Altitude 24.772 deg, Azimuth 179.485 deg
+Topocentric: R.A. 18h 47m 45.222s   Dec. - 22d 57' 23.43"  
+local meridian transit 1986 January 1 Wednesday 16h 48m 07.137s  UT
+rises 1986 January 1 Wednesday 12h 13m 33.241s  UT
+sets 1986 January 1 Wednesday 21h 22m 49.755s  UT
+Visible hours 9.1546
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (16) ? Minutes (47) ? Seconds (0.000000) ? 1986 January 1 Wednesday 20h 05m 05.129s  UT
+1986 January 1 Wednesday 20h 06m 00.000s  TDT
+Julian day 2446432.3375000, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (0) ? 
+                  Mercury        
+
+JD 2446432.34,  1986 January 1 Wednesday 20h 05m 05.129s  UT
+1986 January 1 Wednesday 20h 06m 00.000s  TDT
+ecliptic long  224d 05' 26.79"   lat    0d 30' 00.63"   rad 4.477981E-01
+light time 10.6706m,  aberration dRA -1.346s dDec 4.22"
+true geocentric distance 1.2831571 au    equatorial diameter 5.24"
+approx. visual magnitude -1.5, phase 0.883
+Astrometric J2000.0:  R.A.  17h 35m 09.874s  Dec.  - 23d 08' 33.31"  
+Astrometric B1950.0:  R.A.  17h 32m 07.811s  Dec.  - 23d 06' 38.33"  
+elongation from sun 17.03 degrees, light defl. dRA -0.001s dDec 0.00"
+annual aberration dRA -1.443s dDec 0.84"
+nutation dRA -0.695s dDec -6.54"
+Oph Ophiuchi.  Apparent:  R.A.  17h 34m 16.754s  Dec.  - 23d 08' 08.12"  
+Apparent geocentric ecliptic long  264d 05' 19.82"   lat    0d 10' 25.15"   rad 1.283028E+00
+Local apparent sidereal time  22h 05m 16.005s  
+diurnal aberration dRA 0.006s dDec -0.09"
+diurnal parallax dRA -0.341s dDec -4.97"
+atmospheric refraction 0.536 deg  dRA 95.530s dDec 1407.73"
+Topocentric:  Altitude 0.157 deg, Azimuth 238.332 deg
+Topocentric: R.A. 17h 35m 51.950s   Dec. - 22d 44' 45.45"  
+local meridian transit 1986 January 1 Wednesday 15h 33m 39.645s  UT
+rises 1986 January 1 Wednesday 11h 00m 41.670s  UT
+sets 1986 January 1 Wednesday 20h 06m 17.267s  UT
+Visible hours 9.0932
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (20) ? Minutes (6) ? Seconds (0.000000) ? 1986 January 1 Wednesday 11h 58m 05.129s  UT
+1986 January 1 Wednesday 11h 59m 00.000s  TDT
+Julian day 2446431.9993056, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (1) ? 
+                  Venus          
+
+JD 2446432.00,  1986 January 1 Wednesday 11h 58m 05.129s  UT
+1986 January 1 Wednesday 11h 59m 00.000s  TDT
+ecliptic long  270d 34' 41.58"   lat -  0d 49' 24.86"   rad 7.270590E-01
+light time 14.1688m,  aberration dRA -1.734s dDec 0.17"
+true geocentric distance 1.7036718 au    equatorial diameter 9.79"
+approx. visual magnitude -3.9, phase 0.997
+Astrometric J2000.0:  R.A.  18h 28m 59.044s  Dec.  - 23d 37' 31.12"  
+Astrometric B1950.0:  R.A.  18h 25m 56.289s  Dec.  - 23d 39' 30.93"  
+elongation from sun 4.36 degrees, light defl. dRA -0.003s dDec -0.01"
+annual aberration dRA -1.510s dDec -1.03"
+nutation dRA -0.649s dDec -7.38"
+Sgr Sagittarii.  Apparent:  R.A.  18h 28m 05.721s  Dec.  - 23d 38' 14.39"  
+Apparent geocentric ecliptic long  276d 25' 55.44"   lat -  0d 21' 10.55"   rad 1.703651E+00
+Local apparent sidereal time  13h 56m 56.005s  
+diurnal aberration dRA 0.007s dDec 0.09"
+diurnal parallax dRA 0.258s dDec -3.74"
+atmospheric refraction 0.605 deg  dRA -108.180s dDec 1588.02"
+Topocentric:  Altitude -0.167 deg, Azimuth 121.982 deg
+Topocentric: R.A. 18h 26m 17.805s   Dec. - 23d 11' 50.02"  
+local meridian transit 1986 January 1 Wednesday 16h 29m 32.429s  UT
+rises 1986 January 1 Wednesday 11h 59m 23.162s  UT
+sets 1986 January 1 Wednesday 20h 59m 44.262s  UT
+Visible hours 9.0059
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (11) ? Minutes (59) ? Seconds (0.000000) ? 1986 January 1 Wednesday  1h 51m 05.130s  UT
+1986 January 1 Wednesday  1h 52m 00.000s  TDT
+Julian day 2446431.5777778, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (2) ? 
+                   The Moon
+
+JD 2446431.58,  1986 January 1 Wednesday  1h 51m 05.130s  UT
+1986 January 1 Wednesday  1h 52m 00.000s  TDT
+nutation dRA -0.483s dDec 5.89"
+Geometric lon 156.092 deg, lat 4.422 deg, rad 2.5685e-03 au
+Apparent geocentric longitude 156.089 deg   latitude 4.422 deg
+Distance 60.244 Earth-radii
+Horizontal parallax    0d 57' 03.96"  Semidiameter    0d 15' 32.90"  
+Elongation from sun 124.15 deg,  Illuminated fraction 0.78
+Phase 2.8 days before Third Quarter
+    Apparent:  R.A. 10h 38m 09.360s  Declination   13d 23' 08.73"  
+Local apparent sidereal time   3h 48m 16.291s  
+diurnal aberration dRA -0.004s dDec -0.05"
+diurnal parallax dRA 169.310s dDec -2358.83"
+atmospheric refraction 0.636 deg  dRA -112.901s dDec 1585.14"
+Topocentric:  Altitude -0.299 deg, Azimuth 71.780 deg
+Topocentric: R.A. 10h 39m 05.765s   Dec.   13d 10' 14.99"  
+local meridian transit 1986 January 1 Wednesday  8h 54m 13.566s  UT
+rises 1986 January 1 Wednesday  1h 51m 44.570s  UT
+sets 1986 January 1 Wednesday 15h 43m 38.084s  UT
+Visible hours 13.8649
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (1) ? Minutes (52) ? Seconds (0.000000) ? 1986 January 2 Thursday  7h 24m 05.128s  UT
+1986 January 2 Thursday  7h 25m 00.000s  TDT
+Julian day 2446432.8090278, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (3) ? 
+                  Mars           
+
+JD 2446432.81,  1986 January 2 Thursday  7h 24m 05.128s  UT
+1986 January 2 Thursday  7h 25m 00.000s  TDT
+ecliptic long  189d 56' 41.60"   lat    1d 10' 37.15"   rad 1.636906E+00
+light time 15.6758m,  aberration dRA -0.878s dDec 4.67"
+true geocentric distance 1.8849135 au    equatorial diameter 4.97"
+approx. visual magnitude 1.0, phase 0.927
+Astrometric J2000.0:  R.A.  14h 37m 50.877s  Dec.  - 14d 19' 58.06"  
+Astrometric B1950.0:  R.A.  14h 35m 06.474s  Dec.  - 14d 07' 00.52"  
+elongation from sun 60.24 degrees, light defl. dRA -0.000s dDec 0.00"
+annual aberration dRA -0.684s dDec 2.87"
+nutation dRA -0.701s dDec -1.58"
+Lib Librae.  Apparent:  R.A.  14h 37m 03.433s  Dec.  - 14d 16' 19.88"  
+Apparent geocentric ecliptic long  221d 22' 11.94"   lat    1d 01' 15.36"   rad 1.884847E+00
+Local apparent sidereal time   9h 26m 07.545s  
+diurnal aberration dRA 0.003s dDec 0.06"
+diurnal parallax dRA 0.232s dDec -3.21"
+atmospheric refraction 0.605 deg  dRA -108.102s dDec 1505.18"
+Topocentric:  Altitude -0.167 deg, Azimuth 108.721 deg
+Topocentric: R.A. 14h 35m 15.567s   Dec. - 13d 51' 17.85"  
+local meridian transit 1986 January 2 Thursday 12h 34m 40.946s  UT
+rises 1986 January 2 Thursday  7h 25m 14.981s  UT
+sets 1986 January 2 Thursday 17h 43m 47.262s  UT
+Visible hours 10.3090
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (7) ? Minutes (25) ? Seconds (0.000000) ? 1986 January 2 Thursday  0h 22m 05.129s  UT
+1986 January 2 Thursday  0h 23m 00.000s  TDT
+Julian day 2446432.5159722, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (4) ? 
+                  Jupiter        
+
+JD 2446432.52,  1986 January 2 Thursday  0h 22m 05.129s  UT
+1986 January 2 Thursday  0h 23m 00.000s  TDT
+ecliptic long  325d 15' 28.65"   lat -  0d 55' 17.49"   rad 5.035556E+00
+light time 48.1027m,  aberration dRA -0.608s dDec -2.69"
+true geocentric distance 5.7837967 au    equatorial diameter 34.04"
+approx. visual magnitude -2.1, phase 0.997
+Astrometric J2000.0:  R.A.  21h 25m 27.281s  Dec.  - 15d 59' 31.48"  
+Astrometric B1950.0:  R.A.  21h 22m 41.433s  Dec.  - 16d 12' 30.54"  
+elongation from sun 37.18 degrees, light defl. dRA 0.001s dDec 0.00"
+annual aberration dRA -1.091s dDec -5.33"
+nutation dRA -0.508s dDec -7.27"
+Cap Capricorni.  Apparent:  R.A.  21h 24m 39.285s  Dec.  - 16d 03' 22.90"  
+Apparent geocentric ecliptic long  318d 28' 17.99"   lat -  0d 48' 12.87"   rad 5.783837E+00
+Local apparent sidereal time   2h 22m 58.223s  
+diurnal aberration dRA 0.004s dDec -0.06"
+diurnal parallax dRA -0.075s dDec -1.06"
+atmospheric refraction 0.454 deg  dRA 80.684s dDec 1145.36"
+Topocentric:  Altitude 0.628 deg, Azimuth 247.880 deg
+Topocentric: R.A. 21h 25m 59.898s   Dec. - 15d 44' 18.67"  
+local meridian transit 1986 January 1 Wednesday 19h 24m 24.595s  UT
+rises 1986 January 1 Wednesday 14h 22m 32.238s  UT
+sets 1986 January 2 Thursday  0h 26m 23.677s  UT
+Visible hours 10.0643
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (0) ? Minutes (23) ? Seconds (0.000000) ? 1986 January 2 Thursday  9h 22m 05.128s  UT
+1986 January 2 Thursday  9h 23m 00.000s  TDT
+Julian day 2446432.8909722, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (5) ? 
+                  Saturn         
+
+JD 2446432.89,  1986 January 2 Thursday  9h 22m 05.128s  UT
+1986 January 2 Thursday  9h 23m 00.000s  TDT
+ecliptic long  241d 57' 32.15"   lat    1d 56' 53.33"   rad 9.971808E+00
+light time 89.3713m,  aberration dRA -0.438s dDec 1.28"
+true geocentric distance 10.7459766 au    equatorial diameter 15.40"
+approx. visual magnitude 1.3, phase 0.999
+Astrometric J2000.0:  R.A.  16h 15m 43.771s  Dec.  - 19d 26' 38.75"  
+Astrometric B1950.0:  R.A.  16h 12m 49.007s  Dec.  - 19d 19' 12.65"  
+elongation from sun 36.42 degrees, light defl. dRA -0.001s dDec 0.00"
+annual aberration dRA -1.173s dDec 2.55"
+nutation dRA -0.721s dDec -4.66"
+Sco Scorpii.  Apparent:  R.A.  16h 14m 52.925s  Dec.  - 19d 24' 37.12"  
+Apparent geocentric ecliptic long  245d 18' 16.83"   lat    1d 48' 21.34"   rad 1.074595E+01
+Local apparent sidereal time  11h 24m 26.929s  
+diurnal aberration dRA 0.005s dDec 0.08"
+diurnal parallax dRA 0.041s dDec -0.58"
+atmospheric refraction 0.620 deg  dRA -111.196s dDec 1583.37"
+Topocentric:  Altitude -0.235 deg, Azimuth 115.823 deg
+Topocentric: R.A. 16h 13m 01.775s   Dec. - 18d 58' 14.25"  
+local meridian transit 1986 January 2 Thursday 14h 11m 48.764s  UT
+rises 1986 January 2 Thursday  9h 23m 48.913s  UT
+sets 1986 January 2 Thursday 18h 59m 46.807s  UT
+Visible hours 9.5994
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (9) ? Minutes (23) ? Seconds (0.000000) ? 1986 January 10 Friday 14h 41m 05.118s  UT
+1986 January 10 Friday 14h 42m 00.000s  TDT
+Julian day 2446441.1125000, delta T = 54.88 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (6) ? 
+                  Uranus         
+
+JD 2446441.11,  1986 January 10 Friday 14h 41m 05.118s  UT
+1986 January 10 Friday 14h 42m 00.000s  TDT
+ecliptic long  258d 34' 43.58"   lat -  0d 03' 42.90"   rad 1.911987E+01
+light time 166.0441m,  aberration dRA -0.339s dDec 0.41"
+true geocentric distance 19.9650629 au    equatorial diameter 3.51"
+approx. visual magnitude 5.7, phase 1.000
+Astrometric J2000.0:  R.A.  17h 17m 32.234s  Dec.  - 23d 08' 30.12"  
+Astrometric B1950.0:  R.A.  17h 14m 30.522s  Dec.  - 23d 05' 19.00"  
+elongation from sun 30.02 degrees, light defl. dRA -0.001s dDec 0.00"
+annual aberration dRA -1.306s dDec 1.34"
+nutation dRA -0.661s dDec -6.17"
+Oph Ophiuchi.  Apparent:  R.A.  17h 16m 39.464s  Dec.  - 23d 07' 42.84"  
+Apparent geocentric ecliptic long  260d 02' 40.56"   lat -  0d 03' 40.26"   rad 1.996503E+01
+Local apparent sidereal time  17h 15m 51.807s  
+diurnal aberration dRA 0.017s dDec 0.00"
+diurnal parallax dRA 0.000s dDec -0.40"
+atmospheric refraction 0.035 deg  dRA -0.026s dDec 125.95"
+Topocentric:  Altitude 24.636 deg, Azimuth 179.799 deg
+Topocentric: R.A. 17h 16m 39.455s   Dec. - 23d 05' 37.29"  
+local meridian transit 1986 January 10 Friday 14h 41m 52.669s  UT
+rises 1986 January 10 Friday 10h 10m 21.077s  UT
+sets 1986 January 10 Friday 19h 13m 23.775s  UT
+Visible hours 9.0507
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (10.000000) ? Time: Hours (14) ? Minutes (42) ? Seconds (0.000000) ? 1986 January 10 Friday 15h 41m 05.118s  UT
+1986 January 10 Friday 15h 42m 00.000s  TDT
+Julian day 2446441.1541667, delta T = 54.88 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (7) ? 
+                  Neptune        
+
+JD 2446441.15,  1986 January 10 Friday 15h 41m 05.118s  UT
+1986 January 10 Friday 15h 42m 00.000s  TDT
+ecliptic long  273d 26' 12.25"   lat    1d 05' 43.24"   rad 3.024865E+01
+light time 259.4146m,  aberration dRA -0.268s dDec -0.02"
+true geocentric distance 31.1918326 au    equatorial diameter 2.15"
+approx. visual magnitude 8.0, phase 1.000
+Astrometric J2000.0:  R.A.  18h 17m 56.452s  Dec.  - 22d 18' 51.34"  
+Astrometric B1950.0:  R.A.  18h 14m 55.371s  Dec.  - 22d 20' 03.14"  
+elongation from sun 16.19 degrees, light defl. dRA -0.002s dDec 0.00"
+annual aberration dRA -1.443s dDec -0.73"
+nutation dRA -0.607s dDec -7.18"
+Sgr Sagittarii.  Apparent:  R.A.  18h 17m 03.794s  Dec.  - 22d 19' 20.61"  
+Apparent geocentric ecliptic long  273d 56' 46.62"   lat    1d 03' 37.02"   rad 3.119183E+01
+Local apparent sidereal time  18h 16m 01.664s  
+diurnal aberration dRA 0.017s dDec 0.00"
+diurnal parallax dRA 0.000s dDec -0.25"
+atmospheric refraction 0.034 deg  dRA -0.032s dDec 121.40"
+Topocentric:  Altitude 25.441 deg, Azimuth 179.735 deg
+Topocentric: R.A. 18h 17m 03.779s   Dec. - 22d 17' 19.46"  
+local meridian transit 1986 January 10 Friday 15h 42m 07.102s  UT
+rises 1986 January 10 Friday 11h 06m 56.365s  UT
+sets 1986 January 10 Friday 20h 17m 17.917s  UT
+Visible hours 9.1727
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (10.000000) ? Time: Hours (15) ? Minutes (42) ? Seconds (0.000000) ? 1986 January 1 Wednesday 12h 39m 05.129s  UT
+1986 January 1 Wednesday 12h 40m 00.000s  TDT
+Julian day 2446432.0277778, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (8) ? 
+                  Pluto          
+
+JD 2446432.03,  1986 January 1 Wednesday 12h 39m 05.129s  UT
+1986 January 1 Wednesday 12h 40m 00.000s  TDT
+ecliptic long  215d 09' 19.89"   lat   16d 35' 10.95"   rad 2.973797E+01
+light time 250.6664m,  aberration dRA -0.257s dDec 1.66"
+true geocentric distance 30.1399615 au    equatorial diameter 0.14"
+approx. visual magnitude 13.8, phase 1.000
+Astrometric J2000.0:  R.A.  14h 40m 14.990s  Dec.     1d 36' 22.29"  
+Astrometric B1950.0:  R.A.  14h 37m 42.552s  Dec.     1d 49' 12.88"  
+elongation from sun 65.01 degrees, light defl. dRA -0.000s dDec 0.00"
+annual aberration dRA -0.691s dDec -2.09"
+nutation dRA -0.552s dDec -1.65"
+Vir Virginis.  Apparent:  R.A.  14h 39m 31.049s  Dec.     1d 39' 53.58"  
+Apparent geocentric ecliptic long  216d 55' 28.87"   lat   16d 21' 22.92"   rad 3.013996E+01
+Local apparent sidereal time  14h 38m 02.740s  
+diurnal aberration dRA 0.016s dDec -0.00"
+diurnal parallax dRA 0.000s dDec -0.19"
+atmospheric refraction 0.014 deg  dRA -0.024s dDec 49.44"
+Topocentric:  Altitude 49.407 deg, Azimuth 179.435 deg
+Topocentric: R.A. 14h 39m 31.041s   Dec.    1d 40' 42.82"  
+local meridian transit 1986 January 1 Wednesday 12h 40m 33.219s  UT
+rises 1986 January 1 Wednesday  6h 32m 24.997s  UT
+sets 1986 January 1 Wednesday 18h 48m 41.468s  UT
+Visible hours 12.2712
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (12) ? Minutes (40) ? Seconds (0.000000) ? 1986 January 1 Wednesday  6h 09m 05.130s  UT
+1986 January 1 Wednesday  6h 10m 00.000s  TDT
+Julian day 2446431.7569444, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (9) ? Name of star catalogue file:  (star.cat) ? Line number (1) ? 2000 00 08 23.265  29 05 25.58   1.039  -16.33 -12.0 0.0240   2.06 alAnd(Alpheratz)       4
+
+
+               alpha Andromedae (Alpheratz)
+
+JD 2446431.76,  1986 January 1 Wednesday  6h 09m 05.130s  UT
+1986 January 1 Wednesday  6h 10m 00.000s  TDT
+approx. visual magnitude 2.1
+Astrometric J2000.0:  R.A.   0h 08m 23.118s  Dec.    29d 05' 27.86"  
+Astrometric B1950.0:  R.A.   0h 05m 48.257s  Dec.    28d 48' 46.14"  
+Astrometric of date:  R.A.   0h 07m 39.711s  Dec.    29d 00' 47.45"  
+elongation from sun 93.22 degrees, light defl. dRA 0.000s dDec 0.00"
+annual aberration dRA -0.215s dDec 8.66"
+nutation dRA -0.829s dDec -3.45"
+    Apparent:  R.A.   0h 07m 38.668s  Dec.    29d 00' 52.66"  
+Local apparent sidereal time   8h 06m 58.673s  
+diurnal aberration dRA -0.009s dDec 0.10"
+atmospheric refraction 0.444 deg  dRA 78.482s dDec 1224.21"
+Topocentric:  Altitude 0.692 deg, Azimuth 310.658 deg
+Topocentric: R.A.  0h 08m 57.141s   Dec.   29d 21' 16.96"  
+local meridian transit 1985 December 31 Tuesday 22h 11m 03.676s  UT
+rises 1985 December 31 Tuesday 14h 07m 12.434s  UT
+sets 1986 January 1 Wednesday  6h 14m 54.875s  UT
+Visible hours 16.1285
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (6) ? Minutes (10) ? Seconds (0.000000) ? 1986 January 1 Wednesday  8h 26m 05.130s  UT
+1986 January 1 Wednesday  8h 27m 00.000s  TDT
+Julian day 2446431.8520833, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? Name of orbit catalogue file:  (orbit.cat) ? Line number (1) ? 2447120.5 34.0897 267.3835 73.9085 167.4675275 0.00045478773
+
+0.994811 0.0062424619 2433282.423 5.0 0.0 Bradfield_1987s	5
+
+
+                  Bradfield_1987s
+
+JD 2446431.85,  1986 January 1 Wednesday  8h 26m 05.130s  UT
+1986 January 1 Wednesday  8h 27m 00.000s  TDT
+ecliptic long  204d 53' 52.29"   lat - 31d 05' 24.56"   rad 7.646820E+00
+light time 65.8125m,  aberration dRA -0.404s dDec 0.72"
+true geocentric distance 7.9128960 au    equatorial diameter 0.00"
+approx. visual magnitude 13.9, phase 0.996
+Astrometric J2000.0:  R.A.  13h 11m 51.636s  Dec.  - 40d 14' 27.86"  
+Astrometric B1950.0:  R.A.  13h 09m 00.893s  Dec.  - 39d 58' 32.62"  
+elongation from sun 70.84 degrees, light defl. dRA -0.000s dDec 0.00"
+annual aberration dRA -0.252s dDec 12.10"
+nutation dRA -1.004s dDec 1.38"
+Cen Centauri.  Apparent:  R.A.  13h 11m 02.487s  Dec.  - 40d 09' 47.33"  
+Apparent geocentric ecliptic long  212d 52' 43.46"   lat - 29d 56' 02.71"   rad 7.913251E+00
+Local apparent sidereal time  10h 24m 21.179s  
+diurnal aberration dRA 0.015s dDec 0.10"
+diurnal parallax dRA 0.048s dDec -0.97"
+atmospheric refraction 0.583 deg  dRA -89.452s dDec 1830.02"
+Topocentric:  Altitude -0.071 deg, Azimuth 149.460 deg
+Topocentric: R.A. 13h 09m 33.099s   Dec. - 39d 39' 18.17"  
+local meridian transit 1986 January 1 Wednesday 11h 12m 20.801s  UT
+rises 1986 January 1 Wednesday  8h 27m 00.770s  UT
+sets 1986 January 1 Wednesday 13h 57m 30.796s  UT
+Visible hours 5.5083
+
+Enter starting date of tabulation
+Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (8) ? Minutes (27) ? Seconds (0.000000) ? 1985 December 30 Monday 23h 59m 05.131s  UT
+1985 December 31 Tuesday  0h 00m 00.000s  TDT
+Julian day 2446430.5000000, delta T = 54.87 s
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (99) ? 
