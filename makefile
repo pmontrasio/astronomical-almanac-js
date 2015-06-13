@@ -2,6 +2,7 @@
 CC= emcc
 #CFLAGS=  -O2 -Wall
 CFLAGS=  -O2 --closure 1
+PLANET_CFLAGS = -O2 --closure 1 -s EXPORTED_FUNCTIONS="['_km_to_planet']"
 #CFLAGS=  -g -Wall
 OBJS = altaz.o angles.o annuab.o constel.o deflec.o deltat.o diurab.o \
 diurpx.o dms.o epsiln.o fk4fk5.o kepler.o kfiles.o lightt.o lonlat.o \
@@ -40,7 +41,7 @@ moonrise: moonrise.o $(OBJS) $(INCS)
 moonrise.o: moonrise.c $(INCS)
 
 planet: $(PLANET_OBJS) $(INCS)
-	$(CC) -o planet.js $(PLANET_OBJS) -lm
+	$(CC) -o planet.html $(PLANET_CFLAGS) $(PLANET_OBJS) -lm
 
 planet.o: planet.c $(INCS)
 

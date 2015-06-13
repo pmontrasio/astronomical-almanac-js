@@ -1,0 +1,7 @@
+{
+  "name": "planet_distance",
+  "version": "0.0.1",
+  "dependencies": {
+    "printf": "^0.2.3"
+  }
+}
