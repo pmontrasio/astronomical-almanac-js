@@ -1,7 +1,7 @@
 #CC= gcc
 CC= emcc
 #CFLAGS=  -O2 -Wall
-CFLAGS=  -O2
+CFLAGS=  -O2 --closure 1
 #CFLAGS=  -g -Wall
 OBJS = altaz.o angles.o annuab.o constel.o deflec.o deltat.o diurab.o \
 diurpx.o dms.o epsiln.o fk4fk5.o kepler.o kfiles.o lightt.o lonlat.o \
@@ -10,7 +10,17 @@ trnsit.o vearth.o zatan2.o \
 gplan.o mer404.o ven404.o ear404.o mar404.o jup404.o \
 sat404.o ura404.o nep404.o plu404.o mlr404.o mlat404.o
 
+PLANET_OBJS = planet.o planet_distance.o distance.o consts.o \
+mer404.o ven404.o ear404.o mar404.o jup404.o \
+sat404.o ura404.o nep404.o plu404.o mlr404.o mlat404.o \
+lightt.o kepler.o angles.o vearth.o dms.o gplan.o zatan2.o deltat.o \
+precess.o epsiln.o planet_kinit.o
+
 INCS = kep.h plantbl.h
+
+all: aa conjunct moonrise planet
+
+consts.o: consts.c $(INC)
 
 aa: aa.o $(OBJS) $(INCS)
 	$(CC) -o aa.js aa.o $(OBJS) -lm
@@ -19,15 +29,20 @@ aa: aa.o $(OBJS) $(INCS)
 aa.o: aa.c $(INCS)
 
 conjunct: conjunct.o $(OBJS) $(INCS)
-	$(CC) -o conjunct conjunct.o $(OBJS) -lm
+	$(CC) -o conjunct.js conjunct.o $(OBJS) -lm
 #	coff2exe conjunct
 
 conjunct.o: conjunct.c $(INCS)
 
 moonrise: moonrise.o $(OBJS) $(INCS)
-	$(CC) -o moonrise moonrise.o $(OBJS) -lm
+	$(CC) -o moonrise.js moonrise.o $(OBJS) -lm
 
 moonrise.o: moonrise.c $(INCS)
+
+planet: $(PLANET_OBJS) $(INCS)
+	$(CC) -o planet.js $(PLANET_OBJS) -lm
+
+planet.o: planet.c $(INCS)
 
 altaz.o: altaz.c $(INCS)
 
@@ -40,6 +55,8 @@ constel.o: constel.c $(INCS)
 deflec.o: deflec.c $(INCS)
 
 deltat.o: deltat.c $(INCS)
+
+distance.o: distance.c $(INCS)
 
 diurab.o: diurab.c $(INCS)
 
@@ -60,6 +77,10 @@ lightt.o: lightt.c $(INCS)
 lonlat.o: lonlat.c $(INCS)
 
 nutate.o: nutate.c $(INCS)
+
+planet_distance.o: planet_distance.c $(INCS)
+
+planet_kinit.o: planet_kinit.c $(INCS)
 
 precess.o: precess.c $(INCS)
 

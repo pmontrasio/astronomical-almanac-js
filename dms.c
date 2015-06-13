@@ -9,6 +9,10 @@ double caltoj (long, int, double);
 double caltoj();
 #endif
 
+#ifdef __EMSCRIPTEN__
+char *gets( char *str );
+#endif
+
 char *intfmt = "%d";
 char *lngfmt = "%ld";
 char *dblfmt = "%lf";
