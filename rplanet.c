@@ -133,7 +133,7 @@ return(0);
 
 
 extern struct orbit *elobject;
-extern double robject[];
+static double robject[3];
 
 int doplanet()
 {

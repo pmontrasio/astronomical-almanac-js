@@ -202,14 +202,12 @@ setting includes a first order correction for the motion in right
 ascension and declination of the object between the entered input time
 and the time of the event.  Even so, the calculation has to be
 iterated, or repeated with successively closer estimates of the event
-time.  In view of the first order correction, the iteration has a
+time.  In view of the first order correction the iteration has a
 second-order convergence characteristic and arrives at a precise
 result in just two or three steps.  On the other hand, the technique
 used is unstable for nearly-circumpolar objects, such as the Moon
 observed at high latitudes.  Thus a failure to report rise and set
-times does not necessarily mean that there was no event.  When this
-technique cannot find a rise or set event, the program resorts to a
-search strategy to detect events in a near midnight-sun situation.
+times does not necessarily mean that there was no rise or set event.
 
    The program reports the transit that is nearest to the input time.
 Rise and set times ordinarily precede and follow the transit.  Check
@@ -255,9 +253,9 @@ in the file star.cat.  For all of these, the program's output of
 astrometric position agreed with the 1986 AA to the precision of
 the AA tabulation (an arc second).  The same is true for 1950
 FK4 positions taken from the SAO catalogue.  The program agrees
-to 0.01 arcsec with worked examples presented in the AA. Spot checks
+to 0.01" with worked examples presented in the AA. Spot checks
 against Apparent Places of Fundamental Stars confirm the mean
-place agreement to <0.1 arcsec.  The APFS uses an older nutation
+place agreement to <0.1".  The APFS uses an older nutation
 series, so direct comparison of apparent place is difficult. 
 The program incorporates the complete IAU Theory of Nutation
 (1980).  Items for the Messier catalogue, messier.cat, are from
@@ -279,7 +277,7 @@ Declination, degrees
 Declination, minutes
 Declination, seconds
 Proper motion in R.A., s/century
-Proper motion in Dec., arcsec/century
+Proper motion in Dec., "/century
 Radial velocity, km/s
 Distance, parsecs
 Visual magnitude
@@ -293,11 +291,11 @@ has the following interpretation:
 
 J2000.0      ;Epoch of coordinates, equator, and equinox
 2h 31m 48.704s    ;Right Ascension
-89deg 15' 50.72''   ;Declination
+89deg 15' 50.72"   ;Declination
 19.877       ;proper motion in R.A., s/century
--1.52        ;proper motion in Dec., arcsec/century
+-1.52        ;proper motion in Dec., "/century
 -17.0        ;radial velocity, km/s
-0.007        ;parallax, arcsec
+0.007        ;parallax, "
 2.02         ;magnitude
 alUMi(Polaris)    ;abbreviated name for alpha Ursae Minoris (Polaris)
 
@@ -311,7 +309,7 @@ system.
    Note that catalogue (and AA) star coordinates are referred to
 the center of the solar system, whereas the program displays the
 correct geocentric direction of the object.  The maximum
-difference is 0.8 arcsec in the case of alpha Centauri.
+difference is 0.8" in the case of alpha Centauri.
 
 
 
@@ -321,7 +319,7 @@ difference is 0.8 arcsec in the case of alpha Centauri.
 assumed incorrectly to be at the center of the solar system.
 Since the orbit parameters are heliocentric, the main
 discrepancy is a tiny change in the annual aberration on the
-order of 0.01 arcsec. The difference between TDT and TDB (Terrestrial
+order of 0.01". The difference between TDT and TDB (Terrestrial
 versus Solar System barycentric time) is ignored.  The
 topocentric correction for polar motion of the Earth is also
 ignored.  If you need these corrections, then you should probably
@@ -332,7 +330,7 @@ positions directly from the JPL ephemeris tapes.
               Precession
 
    Since adoption of the 1976 IAU precession constant, improved
-techniques have revealed that a correction of about 0.3 arcsec per
+techniques have revealed that a correction of about 0.3" per
 century is required.  This program uses the value recommended
 by Williams (1994), in part because it is more compatible with
 ephemerides computed from DE403 or DE404.  DE403 values are also
@@ -364,38 +362,28 @@ Version 5.4e: December, 1998
 
               Disc Files
 
-	Build Scripts
-makefile       Unix or Linux make file
-unix.mak
-msvc2008       Microsoft Visual Studio 2008 build script
-msvc6.zip      Archive containing Microsoft Visual C v.6 makefiles
-msvc5.zip      Archive containing Microsoft Visual C v.5 makefiles
-aa_msc6.mak    Old Microsoft C MSDOS make file
-aa.rsp         Auxiliary to aa_msc6.mak
-bc4.zip        Archive containing Borland C version 4 makefiles
-bc5.zip        Archive containing Borland C version 5 makefiles
-aa.prj         Borland Turbo C project file (Thanks to Dominic Scolaro.)
-bcb5.zip       Borland Codebuilder files (Thanks to Luiz Borges.)
-vms.zip        Archive containing DEC VAX VMS makefiles
-descrip.mms    VAX make file (MMS)
-aa.opt         Auxiliary to descrip.mms
-
-	Executables
 aa.ini         Initialization file - edit this to reflect your location
 aa.exe         Executable program for IBM PC MSDOS
 messier.cat    Star catalogue of the Messier objects
 orbit.cat      Orbit catalogue with example comets, asteroids, etc.
 star.cat       Star catalogue of FK5 navigational stars
-aa.que         Test questions (say: aa <aa.que >test.ans).
+msvc5.zip       Archive containing Microsoft Visual C v.5 makefiles
+msvc6.zip       Archive containing Microsoft Visual C v.6 makefiles
+aa_msc6.mak    Old Microsoft C MSDOS make file
+aa.rsp         Auxiliary to aa_msc6.mak
+makefile       Unix make file
+unix.mak
+aa.que         Test questions (say "aa <aa.que >test.ans").
 aa.ans         Answers to test questions (not necessarily true, but
                 what the program says)
-
-	Source Code
 aa.c           Main program, keyboard commands
-	       (See below for other main programs.)
 altaz.c        Apparent geocentric to local topocentric place
 angles.c       Angles and sides of triangle in three dimensions
 annuab.c       Annual aberration
+bc4.zip        Archive containing Borland C version 4 makefiles
+bc5.zip        Archive containing Borland C version 5 makefiles
+aa.prj         Borland Turbo C project file (Thanks to Dominic Scolaro.)
+bcb5.zip       Borland Codebuilder files (Thanks to Luiz Borges.)
 constel.c      Expand constellation name abbreviations
 deflec.c       Deflection of light due to Sun's gravity
 deltat.c       Ephemeris Time minus Universal Time
@@ -432,6 +420,9 @@ plu404.c       Ecliptic polar coordinates of Pluto
 sat404.c       Ecliptic polar coordinates of Saturn
 ura404.c       Ecliptic polar coordinates of Uranus
 ven404.c       Ecliptic polar coordinates of Venus
+vms.zip        Archive containing VAX VMS makefiles
+descrip.mms    VAX make file (MMS)
+aa.opt         Auxiliary to descrip.mms
 
 conjunct.c     This is a separate main program that can be used to
                search for events such as new moon dates, solstices, etc.

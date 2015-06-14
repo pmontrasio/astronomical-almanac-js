@@ -1,0 +1,289 @@
+
+		Silicon Sea Leg 57
+
+This problem is one of a series by Dan Hogan published in the
+NAVIGATION-L mailing list.  They are available from the list home page
+http://www.offsoundings.info/navl.htm, described as follows:
+
+   Silicon Sea is a series of small boat navigation problems in the form
+   of a circumnavigation. Each problem, called a Leg, is complete to
+   itself, There is no need to have worked previous Legs to
+   participate. But being subscribed to Navigation-L is a great help. The
+   navigation cruise started in Mallorca, Spain, transited the Red Sea,
+   crossed the Indian Ocean, Southern Ocean and stopped in Sydney,
+   Australia. Then to Auckland, New Zealand, around Cape Horn up to
+   Bridgetown, Barbados. transited the Panama Canal and took the sailing
+   route to Hawaii. It has left Hawaii and is now bound for San Pedro,
+   California, Silicon Sea's homeport.
+   
+   The Silicon Sea navigation Legs are archived in the files as ssea.zip
+   with an answers file included. The latest Leg in the archive is Leg
+   83.
+
+Navigation list archives maintained by Frank Reed may be found here:
+http://www.fer3.com/NavList/.  Leg 57 was published in August of 1999:
+http://www.fer3.com/arc/sort2.aspx?y=199908
+
+The NAVIGATION-L group has used three mailing list servers.  For
+current discussions, see: http://groups.google.com/group/NavList.
+
+aa program results may be compared to the "Online Nautical Almanac" at
+
+http://www.tecepe.com.br/scripts/AlmanacPagesISAPI.isa
+
+The page for this problem is
+http://www.tecepe.com.br/scripts/AlmanacPagesISAPI.isa/pages?date=03%2F24%2F1999
+
+Ed Falk has also worked this problem, see: http://www.efalk.org/Navigation/
+
+This is my problem solution, and I'm responsible for any errors.
+
+		    - Jim Van Zandt
+
+
+# We use octave to do the arithmetic.
+# First work out the dead reckoning position (DR):
+# 
+# leg duration in hours:
+# octave:1> leg57=((5/60+39)/60+23) - ((23/60+10)/60+0)
+# leg57 = 23.478
+# sailing distance in nautical miles:
+# octave:2> rsail=leg57*10.3
+# rsail = 241.83
+# sailing course:
+# octave:3> TC=119.3*pi/180
+# TC = 2.0822
+# drift distance:
+# octave:4> rdrift=leg57*1
+# rdrift = 23.478
+# drift course:
+# octave:5> TD=115*pi/180
+# TD = 2.0071
+
+# find net motion for this leg (eastward and northward components in nmi)
+# octave:6> disp=rsail*[sin(TC),cos(TC)]+rdrift*[sin(TD),cos(TD)]
+# disp =
+# 
+#    232.17  -128.27
+# previous fix, convert to degrees and fractions
+octave:53> lat=-(51+30/60)
+lat = -51.500
+octave:54> lon=-(80+59.5/60)
+lon = -80.992
+# dead reckoning changes in latitude and longitude, in minutes
+octave:55> dlat=disp(2)/60
+dlat = -2.1378
+octave:56> dlon=disp(1)/60/cos((lat+dlat/2)*pi/180)
+dlon = 6.3663
+# dead reckoning position (deg)
+octave:57> DR=[lon,lat]+[dlon,dlat]
+DR =
+
+  -74.625  -53.638
+
+# For reference, convert the fractional parts to minutes
+octave:58> [.625,.638]*60
+ans =
+
+  37.500  38.280
+
+# so DR is:  74d 37.5' W, 53d 32.28' S
+
+
+# convert observer height from ft to m
+# octave:14> 9*12*2.54/100
+# ans = 2.7432
+# write the DR info into a local aa configuration file
+cat >aa.ini <<EOF
+ -74.625 ;Terrestrial east longitude of observer, degrees
+ -53.638 ;Geodetic latitude, degrees
+2.74    ;Height above sea level, meters
+12.0   ;Atmospheric temperature, deg C
+1010.0 ;Atmospheric pressure, millibars
+2      ; 0 - TDT=UT, 1 - input=TDT, 2 - input=UT
+0.0    ;Use this deltaT (sec) if nonzero, else compute it.
+EOF
+
+# Get the line numbers for the four stars in the catalog file
+egrep -n 'Rigil|Acrux|Aldeb|Peacock' /usr/share/aa/star.cat
+# 10:2000 04 35 55.237  16 30 33.39   0.439  -18.97  54.0 0.0480   0.85 alTau(Aldebara)      629
+# 30:2000 12 26 35.871 -63 05 56.58  -0.524   -1.21 -11.0 0.0000   1.58 al-1Cru(Acrux)      2745
+# 38:2000 14 39 35.885 -60 50  7.44 -49.826   69.93 -22.2 0.7516  -0.01 alCen(Rigil)        5483
+# 52:2000 20 25 38.852 -56 44  6.38   0.082   -8.91   2.0 0.0000   1.94 alPav(Peacock)      9674
+
+# run aa to get positions of all the bodies at the specified time,
+# see "leg57.log".
+
+# Return to reducing the sights:
+# heights measured by sextant, convert to decimal degrees
+
+octave:59> Hs=[15+4.9/60 35+14.8/60 48+40.2/60 13+51.6/60 22+24.8/60]
+Hs =
+
+  15.082  35.247  48.670  13.860  22.413
+
+
+# index correction in minutes (same for all bodies)
+octave:60> IC=-2.5*ones(1,5)
+IC =
+
+  -2.5000  -2.5000  -2.5000  -2.5000  -2.5000
+
+# calculate the magnitude of the dip correction (difference between
+# visible horizon and true horizontal) in minutes
+# (The big number is the Earth radius in m)
+octave:17> dip=sqrt(2/(6/5*6378150)*2.74) *180/pi*60
+dip = 2.9089
+# (this agrees with the nautical almanac)
+
+# dip correction is always negative, and the same for all bodies
+octave:62> dip=-dip*ones(1,5)
+dip =
+
+  -2.9089  -2.9089  -2.9089  -2.9089  -2.9089
+
+# Ordinarily we would add horizontal parallax and refraction corrections
+# to the sextant sighting so we could compare them with almanac values.
+# And aa calculates them for us:
+    247:atmospheric refraction 0.057 deg  dRA 0.109s dDec -203.96"
+    287:atmospheric refraction 0.023 deg  dRA -7.288s dDec -63.30"
+    324:atmospheric refraction 0.014 deg  dRA -6.701s dDec -23.67"
+    361:atmospheric refraction 0.064 deg  dRA 5.532s dDec -217.58"
+    401:atmospheric refraction 0.040 deg  dRA 4.295s dDec -138.92"
+# However, aa also includes them in its altitudes, so we don't have to
+# removed those effects from the sextant sightings.
+
+# We do need a semi-diameter correction for the moon
+# (correction is positive since observation was of lower limb)
+
+octave:76> SD=[15.9 0 0 0 0]
+SD =
+
+  15.90000   0.00000   0.00000   0.00000   0.00000
+
+octave:77> Ha=Hs+(IC+dip+SD)/60
+Ha =
+
+  15.257  35.157  48.580  13.770  22.323
+
+# Here's a summary of the apparent positions per aa
+#    248:Topocentric:  Altitude 15.844 deg, Azimuth 359.324 deg
+#    288:Topocentric:  Altitude 34.898 deg, Azimuth 148.048 deg
+#    325:Topocentric:  Altitude 48.373 deg, Azimuth 137.391 deg
+#    362:Topocentric:  Altitude 14.028 deg, Azimuth 326.254 deg
+#    402:Topocentric:  Altitude 21.955 deg, Azimuth 193.170 deg
+# Sanity check: the calculated values seem pretty close to the
+# observations.
+
+# calculate distance of Line of Position from assumed point
+# (positive for closer to body), in nmi
+
+octave:78> d=(Ha-Hc)'*60
+d =
+
+  -35.249
+   15.511
+   12.411
+  -15.489
+   22.091
+
+# These are the azimuths to the bodies
+octave:66> az=[359.472 148.117 137.438 326.395 193.257]
+az =
+
+  359.47  148.12  137.44  326.39  193.26
+
+# The linear equation for the displacement from DR is  C x = d.
+# where C is the following coefficient matrix
+
+octave:67> C=[sin(az' *pi/180) cos(az' *pi/180)]
+C =
+
+  -0.0092152   0.9999575
+   0.5281864  -0.8491284
+   0.6763876  -0.7365458
+  -0.5534642   0.8328729
+  -0.2293193  -0.9733512
+
+
+# Calculate the least squares solution.
+# octave makes this very easy.  
+
+octave:79> x=C\d
+x =
+
+  -10.533
+  -26.773
+
+# That's 10.5 nmi west and 26.8 nmi south from DR
+
+# find residuals (distance from least squares solution to each LOP)
+
+octave:80> C*x-d
+ans =
+
+   8.57421
+   1.65904
+   0.18386
+  -0.97981
+   6.38375
+
+# The first and last (moon and Peacock) are suspiciously large.
+# The first LOP (for the moon) is the furthest one.  Let's recalculate
+# the solution, leaving out that observation.
+octave:43> x2=C(2:5,:)\d(2:5)
+x2 =
+
+   -4.9530
+  -21.5456
+
+# which is 4.95 nmi west and 21.54 nmi south from DR
+
+# recalculate the residuals
+octave:82> C*x2-d
+ans =
+
+  13.749836
+   0.167752
+   0.108050
+   0.285448
+   0.016146
+
+# The other LOPs agree pretty well.
+
+# Alternatively, we could omit the last sighting:
+octave:83> x3=C(1:4,:)\d(1:4)
+x3 =
+
+  -22.734
+  -34.720
+
+octave:84> C*x3-d
+ans =
+
+    0.73999
+    1.96292
+   -2.21509
+   -0.84611
+   16.91676
+
+# In this case the residuals are larger, so we settle on leaving out
+# the lunar observation.
+
+# calculate the new fix
+octave:85> dlat=x2(2)/60
+dlat = -0.35909
+octave:86> dlon=x2(1)/60/cos((DR(2)+dlat/2)*pi/180)
+dlon = -0.13983
+octave:87> FIX=DR+[dlon dlat]
+FIX =
+
+  -74.765  -53.997
+
+# convert the fractional degrees to minutes
+octave:88> [.765 .997]*60
+ans =
+
+  45.900  59.820
+
+# so the final fix is:  74 deg 45.9' W, 53 deg 59.8' S

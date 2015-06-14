@@ -5,12 +5,10 @@
 #include "kep.h"
 #if __STDC__
 double caltoj (long, int, double);
+#include <string.h>
+#include <stdlib.h>
 #else
 double caltoj();
-#endif
-
-#ifdef __EMSCRIPTEN__
-char *gets( char *str );
 #endif
 
 char *intfmt = "%d";
@@ -322,7 +320,7 @@ long year, a, c, d, x, y, jd;
 int BC;
 double dd;
 
-if( J < 1721423.5 ) /* January 1.0, 1 A.D. */
+if( J < 1721425.5 ) /* January 1.0, 1 A.D. */
 	BC = 1;
 else
 	BC = 0;
@@ -489,7 +487,13 @@ else if( format == lngfmt )
 else
 	printf( "Illegal input format\n"  );
 printf( ") ? ");
-gets(s);
+{
+  char *str;
+  if (fgets(s,40,stdin) == NULL)
+    exit(0);
+  if ((str = strchr(s, '\n')))
+    *str=0;
+}
 if( s[0] != '\0' )
 	sscanf( s, format, num );
 return(0);

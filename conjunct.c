@@ -1,20 +1,19 @@
-/* Search program to find dates of equinox or new moon.  */
+/* Search program to find dates of equinox or new/full moon.  */
 
-/* November 28, 4057 B.C.*/
-/* #define STARTDATE  239935.5 */
+double STARTDATE;
+double ENDDATE;
 
-#define STARTDATE  625379.5
+#define NEWMOON 0
+#define FULLMOON 1
+#define SPRING 2
+#define SUMMER 3
+#define AUTUMN 4
+#define WINTER 5
 
-/* January 31, 1982 */
-#define ENDDATE    2445000.5
-
-/* Define one of these nonzero, the others zero.  */
-#define NEWMOON 1
-#define FULLMOON 0
-#define FIRST_QUARTER_MOON 0
-#define THIRD_QUARTER_MOON 0
-#define EQUINOX 0
-
+#define _XOPEN_SOURCE /* glibc2 needs this to declare strptime */
+#include <stdlib.h>
+#include <getopt.h>
+#include <time.h>
 #include "kep.h"
 /* Conversion factors between degrees and radians */
 double DTR = 1.7453292519943295769e-2;
@@ -23,6 +22,9 @@ double RTS = 2.0626480624709635516e5; /* arc seconds per radian */
 double STR = 4.8481368110953599359e-6; /* radians per arc second */
 double PI = 3.14159265358979323846;
 double TPI = 6.28318530717958647693;
+
+/* unused, but must be defined for rplanet.c and rstar.c */
+struct orbit *elobject;	/* pointer to orbital elements of object */
 
 extern double PI;
 
@@ -123,62 +125,138 @@ int prtflg = 0;
 double dradt, ddecdt;
 extern double FAR moonpol[];
 extern double FAR moonpp[];
+static int event=NEWMOON;
 
 double zgetdate(), gethms();
 double func(), search();
 int apparent();
 
-struct orbit *elobject;
-double robject[3] = {0.0, 0.0, 0.0};
-static int first_search;
-
-
-int main()
+int main(int argc, char **argv)
 {
-  double t, t0;
+  double t=0, t0;
+  int c;
+  time_t now=time(NULL);
+  struct tm date=*localtime(&now);
 
   kinit();
+
+  STARTDATE=caltoj( date.tm_year+1900, date.tm_mon+1, date.tm_mday );
+  ENDDATE=caltoj( date.tm_year+1900+1, date.tm_mon+1, date.tm_mday );
+
+  while (1) {
+    int option_index = 0;
+    static struct option long_options[] = {
+      {"start", 1, 0, 's'},
+      {"end", 1, 0, 'e'},
+      {"spring", 0, 0, 'V'},
+      {"vernal", 0, 0, 'V'},
+      {"summer", 0, 0, 'S'},
+      {"autumn", 0, 0, 'A'},
+      {"fall", 0, 0, 'A'},
+      {"winter", 0, 0, 'W'},
+      {"newmoon", 0, 0, 'N'},
+      {"fullmoon", 0, 0, 'F'},
+      {"help", 0, 0, 'h'},
+      {0, 0, 0, 0}
+    };
+    c = getopt_long (argc, argv, "s:e:VSAWNFh",
+		     long_options, &option_index);
+    if (c == -1)
+      break;
+    switch (c) {
+    case 's': 
+      if (strptime(optarg, "%Y-%m-%d", &date))
+	STARTDATE=caltoj( date.tm_year+1900, date.tm_mon+1, date.tm_mday );
+      else
+	STARTDATE=atof(optarg); 
+      break;
+    case 'e':
+      if (strptime(optarg, "%Y-%m-%d", &date))
+	ENDDATE=caltoj( date.tm_year+1900, date.tm_mon+1, date.tm_mday );
+      else
+	ENDDATE=atof(optarg); 
+      break;
+    case 'V': event=SPRING; break;
+    case 'S': event=SUMMER; break;
+    case 'A': event=AUTUMN; break;
+    case 'W': event=WINTER; break;
+    case 'N': event=NEWMOON; break;
+    case 'F': event=FULLMOON; break;
+    case 'h': 
+    default:
+      printf("conjunct -  find dates of equinox or new/full moon\n"
+	     "options:\n"
+	     " -s, --start DATE  Julian or ISO 8601 starting date (default today)\n"
+	     " -e, --end DATE  ending date (default 1 year from today)\n"
+	     " -V, --vernal    find times of spring equinox\n"
+	     " -S, --summer    find times of summer solstice\n"
+	     " -A, --autumn    find times of autumn equinox\n"
+	     " -W, --winter    find times of winter solstice\n"
+	     " -F, --fullmoon  find times of full moon\n"
+	     " -N, --newmoon   find times of new moon (default)\n");
+      exit(0);		     
+      break;
+    }
+  }
+  if (STARTDATE >= ENDDATE)
+    {
+      printf("start date=%f >= end date=%f\n", STARTDATE, ENDDATE);
+      exit(1);
+    }
+  
   objnum = 0;
-  t0 = STARTDATE;
-  first_search = 0;
-  while( t0 <= ENDDATE )
+  //  printf("184:STARTDATE=%6.1f\n", STARTDATE);
+  t0 = STARTDATE - (((event==FULLMOON)||(event==NEWMOON))?40:400);
+  while( 1 )
     {
       prtflg = 0;
-#if EQUINOX
-      t = search( t0, 0.0, 364.0 );
-#endif
-#if NEWMOON
-      t = search( t0, 0.0, 27.0 );
-#endif
-#if FULLMOON
-      t = search( t0, PI, 27.0 );
-#endif
-#if FIRST_QUARTER_MOON
-      t = search( t0, -0.5*PI, 27.0 );
-#endif
-#if THIRD_QUARTER_MOON
-      t = search( t0, 0.5*PI, 27.0 );
-#endif
+      switch(event)
+	{
+	case SPRING:
+	  t = search( t0, 0.0, 364.0 );
+	  break;
+	case AUTUMN:
+	  t = search( t0, PI, 364.0 );
+	  break;
+	case WINTER:
+	  t = search( t0, -PI/2, 364.0 );
+	  break;
+	case SUMMER:
+	  t = search( t0, PI/2, 364.0 );
+	  break;
+	case NEWMOON:
+	  t = search( t0, 0.0, 27.0 );
+	  break;
+	case FULLMOON:
+	  t = search( t0, PI, 27.0 );
+	  break;
+	}
       TDT = t;
-      printf("%.4f ", t);
-      prtflg = 1;
-      jtocal(t);
+      if (t > ENDDATE)
+	break;
+      if (t >= STARTDATE)
+	{
+	  printf("%.4f ", t);
+	  prtflg = 1;
+	  jtocal(t);
+	}
       t0 = t;
     }
 exit(0);
 }
 
-
 /* Search for desired conjunction.
    On the first call to this function, search forward from date T
-   in steps of delta / 8 days until the error changes sign.
-   On subsequent calls, step forward delta days, then search forward
+   in steps of DELTA / 8 days until the error changes sign.
+   On subsequent calls, step forward DELTA days from T, then search forward
    in steps of 1 day until the error changes sign.
    Then, in both cases, reduce the error by interval halving
    until the function equals Y with the desired precision.  */
 
+static int first_search = 0;
+
 double search(t, y, delta)
-double t, y, delta;
+     double t, y, delta;
 {
   double tl, tm, th, yl, ym, yh, el, eh, em, dt;
 
@@ -208,74 +286,94 @@ double t, y, delta;
       th = th + dt;
       yh = func(th);
       eh = yh - y;
-    if(eh > PI)
-      eh -= TPI;
-    if(eh <= -PI)
-      eh += TPI;
-    /* Keep searching while error is large.  */
-    if (fabs (eh) > 0.5*PI)
-	continue;
-    /* Look for sign change.  */
-    if((el * eh) <= 0.0)
-	break;
+      if(eh > PI)
+	eh -= TPI;
+      if (eh <= -PI)
+	eh += TPI;
+      /* Bracket the solution date.  */
+      for (;;)
+	{
+	  tl = th;
+	  yl = yh;
+	  el = eh;
+	  th = th + dt;
+	  yh = func(th);
+	  eh = yh - y;
+	  if(eh > PI)
+	    eh -= TPI;
+	  if(eh <= -PI)
+	    eh += TPI;
+	  /* Keep searching while the error is large.  */
+	  if (fabs (eh) > 0.5*PI)
+	    continue;
+	  /* Look for sign change */
+	  if((el * eh) <= 0.0)
+	    break;
+	}
+      /* Search by simple interval halving.  */
+      while( (th - tl) > .00001 )
+	{
+	  tm = 0.5 * (tl + th);
+	  ym = func(tm);
+	  em = ym - y;
+	  if(em > PI)
+	    em -= TPI;
+	  if(em <= -PI)
+	    em += TPI;
+	  /* Replace the inteval boundary that has the same sign as em.  */
+	  if( em * eh > 0 )
+	    {
+	      yh = ym;
+	      th = tm;
+	      eh = em;
+	    }
+	  else
+	    {
+	      yl = ym;
+	      tl = tm;
+	      el = em;
+	    }
+	}
+      tm = tl + (th - tl) * (-el)/(yh -yl);
+      return (tm);
     }
-
-/* Search by simple interval halving.  */
-while( (th - tl) > .00001 )
-  {
-    tm = 0.5 * (tl + th);
-    ym = func(tm);
-    em = ym - y;
-    if(em > PI)
-      em -= TPI;
-    if(em <= -PI)
-      em += TPI;
-    /* Replace the interval boundary that has the same sign as em.  */
-     if( em * eh > 0 )
-      {
-	yh = ym;
-	th = tm;
-	eh = em;
-      }
-    else
-      {
-	yl = ym;
-	tl = tm;
-	el = em;
-      }
-  }
- tm = tl + (th - tl) * (-el)/(yh -yl);
-return (tm);
 }
 
-/* Compute desired relation of apperent ecliptic longitude
+/* Compute desired relation of apparent ecliptic longitude
    as a function of the ephemeris date.  */
 double func(t)
 double t;
 {
   double p[3], q[3], polar[3];
   double s;
-#if NEWMOON || FULLMOON || FIRST_QUARTER_MOON || THIRD_QUARTER_MOON
   double m;
-#endif
+  double val;
 
   TDT = t;
   /* Longitude of the sun.  */
   objnum = 0;
   apparent(p,q);
   lonlat(p,TDT,polar,0);
-  s = polar[0];
-#if NEWMOON || FULLMOON || FIRST_QUARTER_MOON || THIRD_QUARTER_MOON
-  /* Longitude of the moon.  */
-  objnum = 3;
-  apparent(p,q);
-  lonlat(p,TDT,polar,0);
-  m = polar[0];
-  return (s - m);
-#endif
-#if EQUINOX
-  return s;
-#endif
+  val = s = polar[0];
+  switch(event)
+    {
+    case NEWMOON:
+    case FULLMOON:
+      /* Longitude of the moon.  */
+      objnum = 3;
+      apparent(p,q);
+      lonlat(p,TDT,polar,0);
+      m = polar[0];
+      val = s - m;
+      break;
+    case SPRING:
+    case WINTER:
+    case AUTUMN:
+    case SUMMER:
+      val = s;
+      break;
+    }
+  return val;
 }
 
 
@@ -355,7 +453,7 @@ annuab( p );
  */
 precess( p, TDT, -1 );
 
-/* Ajust for nutation
+/* Adjust for nutation
  * at current ecliptic.
  */
 epsiln( TDT );

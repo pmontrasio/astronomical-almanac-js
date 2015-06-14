@@ -1344,7 +1344,7 @@ static double FAR tabr[] = {
 
 };
 
-static char FAR args[] = {
+static char SIGNED FAR args[] = {
   0,  4,
   3,  4,  3, -8,  4,  3,  5,  2,
   3,  5,  2, -6,  3, -4,  4,  0,

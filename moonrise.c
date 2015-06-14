@@ -1,22 +1,8 @@
 /* Search program to print tables of moonrise.  */
 
-/* Choose sun, moon, or other object  */
-#define RISE_OBJ_FUNC domoon
-#define RISE_OBJ_NUM 3
-/*
-#define RISE_OBJ_FUNC dosun
-#define RISE_OBJ_NUM 0
-*/
-#define STARTDATE  2446429.0 /* Dec 29, 1985 */
-#define ENDDATE    2446797.0 /* Jan 1, 1987 */
-/*
-#define STARTDATE  2448431.1
-#define ENDDATE    2448831.1
-*/
-#define USE_ITER_TRNSIT 1
+#define STARTDATE  2448431.5
+#define ENDDATE    2448831.5
 
-
-#include <stdio.h>
 #include <stdlib.h>
 #include "kep.h"
 /* Conversion factors between degrees and radians */
@@ -26,6 +12,9 @@ double RTS = 2.0626480624709635516e5;	/* arc seconds per radian */
 double STR = 4.8481368110953599359e-6;	/* radians per arc second */
 double PI = 3.14159265358979323846;
 double TPI = 6.28318530717958647693;
+
+/* unused, but must be defined for rplanet.c and rstar.c */
+struct orbit *elobject;	/* pointer to orbital elements of object */
 
 extern double PI;
 
@@ -41,7 +30,7 @@ double sqrt (), asin (), log ();
 /* coordinates of object
  */
 int objnum = 0;			/* I.D. number of object */
-double robject[3] = {0.0}; /* position */
+
 /* ecliptic polar coordinates:
  * longitude, latitude in radians
  * radius in au
@@ -124,14 +113,14 @@ extern char *intfmt, *dblfmt;
 
 /* display enable flag */
 int prtflg = 0;
-struct orbit *elobject;	/* pointer to orbital elements of object */
+
 double dradt, ddecdt;
 extern double FAR moonpol[];
 extern double FAR moonpp[];
 
 double zgetdate (), gethms ();
-double search (double);
-static void func (double);
+double search ();
+static void func ();
 int apparent ();
 
 /* Results computed by domoon.c  */
@@ -145,66 +134,19 @@ double t_trnsit;
 double t_rise;
 double t_set;
 
-extern double tlong, glat, tlat, flat, height, trho, aearth;
-
-
-/* Callable kinit function */
-
-void
-set_geographic_position ()
-{
-  double u, co, si, fl, a, b;
-
-	u = glat * DTR;
-/* Reduction from geodetic latitude to geocentric latitude
- * AA page K5
- */
-	co = cos(u);
-	si = sin(u);
-	fl = 1.0 - 1.0/flat;
-	fl = fl*fl;
-	si = si*si;
-	u = 1.0/sqrt( co*co + fl*si );
-	a = aearth*u + height;
-	b = aearth*fl*u  +  height;
-	trho = sqrt( a*a*co*co + b*b*si );
-	tlat = RTD * acos( a*co/trho );
-	if( glat < 0.0 )
-		tlat = -tlat;
-	trho /= aearth;
-}
-
-
-
 int 
 main ()
 {
-  double jd;
-  int geo_lon, geo_lat;
+  double u;
 
   kinit ();
   printf("\nTable of lunar rise, transit, and set times.\n\n");
   objnum = 0;
-  jd = STARTDATE;
-  while (jd <= ENDDATE)
+  u = STARTDATE;
+  while (u <= ENDDATE)
     {
       prtflg = 0;
-      geo_lon = 0;
-      /*
-      for (geo_lon = 0; geo_lon <= 60; geo_lon += 10)
-	{
-      */
-	  for (geo_lat = 40; geo_lat <= 66; geo_lat += 2)
-	    {
-	      tlong = geo_lon;
-	      glat = geo_lat;
-	      set_geographic_position ();
-	      printf ("lon %d, lat %d\n", geo_lon, geo_lat);
-
-#if USE_ITER_TRNSIT
-      func (jd);
-#else
-      jd = search (jd);
+      u = search (u);
       prtflg = 1;
       if (f_trnsit)
         jtocal (t_rise);
@@ -217,12 +159,7 @@ main ()
 	printf("\n");
       prtflg = 0;
       printf ("\n");
-#endif
-	    }
-	  /*
-	}
-	  */
-      jd += 4.0;
+      u += 1.0;
     }
   exit (0);
 }
@@ -330,13 +267,10 @@ func (t)
 
   prtsave = prtflg;
   prtflg = 0;
-  objnum = RISE_OBJ_NUM;
+  objnum = 3;
   JD = t;
   update ();			/* find UT */
   kepler (TDT, &earth, rearth, eapolar);
-  RISE_OBJ_FUNC ();
-#if  USE_ITER_TRNSIT
-  iter_trnsit (RISE_OBJ_FUNC);
-#endif
+  domoon ();
   prtflg = prtsave;
 }

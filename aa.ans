@@ -1,5 +1,5 @@
 
-	Steve Moshier's Ephemeris Program v5.6
+	Steve Moshier's Ephemeris Program v5.5
 
 Planetary and lunar positions approximate DE404.
 Terrestrial east longitude -71.1300 deg
@@ -11,7 +11,7 @@ Input time is TDT.
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (0) ? Minutes (0) ? Seconds (0.000000) ? 1986 January 1 Wednesday 16h 46m 05.129s  UT
 1986 January 1 Wednesday 16h 47m 00.000s  TDT
-Julian day 2446432.1993056, delta T = 54.87 s
+Julian day 2446432.1993056
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (0) ? 
                    The Sun
 
@@ -20,7 +20,7 @@ JD 2446432.20,  1986 January 1 Wednesday 16h 46m 05.129s  UT
 ecliptic long  280d 59' 11.39"   lat    0d 00' 00.45"   rad 9.832795E-01
 light time 8.1777m,  aberration dRA 1.503s dDec 1.74"
 nutation dRA -0.629s dDec -7.61"
-Sgr Sagittarii.    Apparent:  R.A.  18h 47m 45.266s  Dec.  - 22d 59' 20.49"  
+    Apparent:  R.A.  18h 47m 45.266s  Dec.  - 22d 59' 20.49"  
 Apparent longitude 280.978 deg
 Local apparent sidereal time  18h 45m 43.315s  
 diurnal aberration dRA 0.017s dDec 0.00"
@@ -36,7 +36,7 @@ Visible hours 9.1546
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (16) ? Minutes (47) ? Seconds (0.000000) ? 1986 January 1 Wednesday 20h 05m 05.129s  UT
 1986 January 1 Wednesday 20h 06m 00.000s  TDT
-Julian day 2446432.3375000, delta T = 54.87 s
+Julian day 2446432.3375000
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (0) ? 
                   Mercury        
 
@@ -67,7 +67,7 @@ Visible hours 9.0932
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (20) ? Minutes (6) ? Seconds (0.000000) ? 1986 January 1 Wednesday 11h 58m 05.129s  UT
 1986 January 1 Wednesday 11h 59m 00.000s  TDT
-Julian day 2446431.9993056, delta T = 54.87 s
+Julian day 2446431.9993056
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (1) ? 
                   Venus          
 
@@ -98,7 +98,7 @@ Visible hours 9.0059
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (11) ? Minutes (59) ? Seconds (0.000000) ? 1986 January 1 Wednesday  1h 51m 05.130s  UT
 1986 January 1 Wednesday  1h 52m 00.000s  TDT
-Julian day 2446431.5777778, delta T = 54.87 s
+Julian day 2446431.5777778
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (2) ? 
                    The Moon
 
@@ -126,7 +126,7 @@ Visible hours 13.8649
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (1) ? Minutes (52) ? Seconds (0.000000) ? 1986 January 2 Thursday  7h 24m 05.128s  UT
 1986 January 2 Thursday  7h 25m 00.000s  TDT
-Julian day 2446432.8090278, delta T = 54.87 s
+Julian day 2446432.8090278
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (3) ? 
                   Mars           
 
@@ -157,7 +157,7 @@ Visible hours 10.3090
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (7) ? Minutes (25) ? Seconds (0.000000) ? 1986 January 2 Thursday  0h 22m 05.129s  UT
 1986 January 2 Thursday  0h 23m 00.000s  TDT
-Julian day 2446432.5159722, delta T = 54.87 s
+Julian day 2446432.5159722
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (4) ? 
                   Jupiter        
 
@@ -188,7 +188,7 @@ Visible hours 10.0643
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (0) ? Minutes (23) ? Seconds (0.000000) ? 1986 January 2 Thursday  9h 22m 05.128s  UT
 1986 January 2 Thursday  9h 23m 00.000s  TDT
-Julian day 2446432.8909722, delta T = 54.87 s
+Julian day 2446432.8909722
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (5) ? 
                   Saturn         
 
@@ -219,7 +219,7 @@ Visible hours 9.5994
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (2.000000) ? Time: Hours (9) ? Minutes (23) ? Seconds (0.000000) ? 1986 January 10 Friday 14h 41m 05.118s  UT
 1986 January 10 Friday 14h 42m 00.000s  TDT
-Julian day 2446441.1125000, delta T = 54.88 s
+Julian day 2446441.1125000
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (6) ? 
                   Uranus         
 
@@ -250,7 +250,7 @@ Visible hours 9.0507
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (10.000000) ? Time: Hours (14) ? Minutes (42) ? Seconds (0.000000) ? 1986 January 10 Friday 15h 41m 05.118s  UT
 1986 January 10 Friday 15h 42m 00.000s  TDT
-Julian day 2446441.1541667, delta T = 54.88 s
+Julian day 2446441.1541667
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (7) ? 
                   Neptune        
 
@@ -281,7 +281,7 @@ Visible hours 9.1727
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (10.000000) ? Time: Hours (15) ? Minutes (42) ? Seconds (0.000000) ? 1986 January 1 Wednesday 12h 39m 05.129s  UT
 1986 January 1 Wednesday 12h 40m 00.000s  TDT
-Julian day 2446432.0277778, delta T = 54.87 s
+Julian day 2446432.0277778
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (8) ? 
                   Pluto          
 
@@ -312,8 +312,8 @@ Visible hours 12.2712
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (12) ? Minutes (40) ? Seconds (0.000000) ? 1986 January 1 Wednesday  6h 09m 05.130s  UT
 1986 January 1 Wednesday  6h 10m 00.000s  TDT
-Julian day 2446431.7569444, delta T = 54.87 s
-Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (9) ? Name of star catalogue file:  (star.cat) ? Line number (1) ? 2000 00 08 23.265  29 05 25.58   1.039  -16.33 -12.0 0.0240   2.06 alAnd(Alpheratz)       4
+Julian day 2446431.7569444
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (9) ? Name of star catalogue file:  (/usr/share/aa/star.cat) ? Line number (1) ? 2000 00 08 23.265  29 05 25.58   1.039  -16.33 -12.0 0.0240   2.06 alAnd(Alpheratz)       4
 
 
                alpha Andromedae (Alpheratz)
@@ -341,8 +341,8 @@ Visible hours 16.1285
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (6) ? Minutes (10) ? Seconds (0.000000) ? 1986 January 1 Wednesday  8h 26m 05.130s  UT
 1986 January 1 Wednesday  8h 27m 00.000s  TDT
-Julian day 2446431.8520833, delta T = 54.87 s
-Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? Name of orbit catalogue file:  (orbit.cat) ? Line number (1) ? 2447120.5 34.0897 267.3835 73.9085 167.4675275 0.00045478773
+Julian day 2446431.8520833
+Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? Name of orbit catalogue file:  (/usr/share/aa/orbit.cat) ? Line number (1) ? 2447120.5 34.0897 267.3835 73.9085 167.4675275 0.00045478773
 
 0.994811 0.0062424619 2433282.423 5.0 0.0 Bradfield_1987s	5
 
@@ -376,5 +376,5 @@ Visible hours 5.5083
 Enter starting date of tabulation
 Calendar date: Year (1986) ? Month (1-12) (1) ? Day.fraction (1.000000) ? Time: Hours (8) ? Minutes (27) ? Seconds (0.000000) ? 1985 December 30 Monday 23h 59m 05.131s  UT
 1985 December 31 Tuesday  0h 00m 00.000s  TDT
-Julian day 2446430.5000000, delta T = 54.87 s
+Julian day 2446430.5000000
 Enter interval between tabulations in days (1.000000) ? Number of tabulations to display (1) ? Planet number 0-9 or 88 to read star, 99 to read orbit (99) ? 

@@ -1,0 +1,39 @@
+astronomical-almanac (5.6-3) unstable; urgency=low
+
+  * debian/control: move homepage reference to Homepage field.  Bump
+    policy version to 3.8.0.
+  
+  * debian/rules: update handling of DEB_BUILD_OPTIONS
+
+ -- James R. Van Zandt <jrv@debian.org>  Thu, 14 Aug 2008 18:49:09 -0400
+
+astronomical-almanac (5.6-2) unstable; urgency=low
+
+  * rplanet.c: declare robject as static, so it doesn't conflict with the
+    definition in aa (suggested by author Steven Moshier).
+
+  * debian/manpage.1.ex: delete 
+
+  * /usr/share/doc/astronomical-almanac/examples/README: mention sample
+    celestial navigation problem.  README is now a shell script.
+  
+  * /usr/share/doc/astronomical-almanac/examples/: add solution of sample
+    celestial navigation problem.
+
+ -- James R. Van Zandt <jrv@debian.org>  Mon,  9 Oct 2006 21:35:39 -0400
+
+astronomical-almanac (5.6-1) unstable; urgency=low
+
+  * Initial release (Closes:Bug#386034)
+  * kfiles.c: default locations for star.cat and orbit.cat are in
+    /usr/share/aa. look for initialization in ./aa.ini then ~/.aa.ini then
+    /etc/aa.ini.  Look for star charts in /usr/share/aa/star.cat.  Look
+    for orbits in /usr/share/aa/orbit.cat.
+  * conjunct.c: Accept inputs from the command line (start and end time,
+    event type).
+  * aa.que, aa.ans:   Look for star charts in /usr/share/aa/star.cat.  Look
+    for orbits in /usr/share/aa/orbit.cat.
+  * dms.c: check whether fgets returns NULL.
+
+ -- James R. Van Zandt <jrv@debian.org>  Mon,  4 Sep 2006 15:13:08 -0400
+

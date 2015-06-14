@@ -22,7 +22,7 @@
 
 #include "kep.h"
 extern double tlong, tlat, glat;
-double azimuth, elevation, refracted_elevation;
+
 
 int altaz( pol, J )
 double pol[3];
@@ -94,16 +94,11 @@ az = RTD * zatan2( D, N );
 alt = sindec * sinlat  +  cosdec * coslha * coslat;
 alt = RTD * asin(alt);
 
-/* Store results */
-azimuth = az;
-elevation = alt; /* Save unrefracted value. */
-
 /* Correction for atmospheric refraction
  * unit = degrees
  */
 D = refrac( alt );
 alt += D;
-refracted_elevation = alt;
 
 /* Convert back to R.A. and Dec.
  */

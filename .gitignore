@@ -1,3 +1,10 @@
 *.o
 *~
 node_modules
+*.mem
+aa.js
+conjunct.js
+moonrise.js
+planet.js
+*html
+

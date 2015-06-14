@@ -1,18 +1,32 @@
 /* DeltaT = Ephemeris Time - Universal Time
  *
- * Tabulated values of deltaT, in hundredths of a second, are
- * from The Astronomical Almanac and current IERS reports.
- * A table of values for the pre-telescopic period was taken from
- * Morrison and Stephenson (2004).  The overall tabulated range is
- * -1000.0 through 2011.0.  Values at intermediate times are interpolated
- * from the tables.
+ * The tabulated values of deltaT, in hundredths of a second,
+ * were taken from The Astronomical Almanac, page K8.  The program
+ * adjusts for a value of secular tidal acceleration ndot. It is -25.8
+ * arcsec per century squared for JPL's DE403 ephemeris.
+ * ELP2000 and DE200 use the value -23.8946.
  *
- * For dates earlier and later than the tabulated range, the program
- * calculates a polynomial extrapolation formula.
+ * The tabulated range is 1620.0 through 2003.0.  Bessel's interpolation
+ * formula is implemented to obtain fourth order interpolated values at
+ * intermediate times.
  *
- * Updated deltaT predictions can be obtained from this network archive,
+ * Updated deltaT predictions can be obtained from this network archive:
  *    http://maia.usno.navy.mil
- * and appended to the table.
+ * Currently (as of 2002) available series are
+ *    tai-utc.dat  Changes by 1 whenever there is a leap second
+ *    finals.all   EOP including UT1-UTC, always less than 1 second
+ * from which deltaT = 32.184 + (tai-utc) - (UT1-UTC)
+ *
+ * For dates earlier than the tabulated range, the program
+ * calculates approximate formulae of Stephenson and Morrison
+ * or K. M. Borkowski.  These approximations have an estimated
+ * error of 15 minutes at 1500 B.C.  They are not adjusted for small
+ * improvements in the current estimate of ndot because the formulas
+ * were derived from studies of ancient eclipses and other historical
+ * information, whose interpretation depends only partly on ndot.
+ *
+ * A quadratic extrapolation formula, that agrees in value and slope with
+ * current data, predicts future values of deltaT.
  *
  * Input Y is the Julian epoch expressed in Julian years.  Y can be
  * found from the Julian date JD by
@@ -24,60 +38,45 @@
  *
  * References:
  *
- * Morrison, L. V., and F. R. Stephenson, Historical values of the Earth's
- * clock error deltat T and the calculation of eclipses. Journal for the
- * History of Astronomy 35, 327-336 (2004)
- *
  * Stephenson, F. R., and L. V. Morrison, "Long-term changes
  * in the rotation of the Earth: 700 B.C. to A.D. 1980,"
  * Philosophical Transactions of the Royal Society of London
  * Series A 313, 47-70 (1984)
  *
+ * Borkowski, K. M., "ELP2000-85 and the Dynamical Time
+ * - Universal Time relation," Astronomy and Astrophysics
+ * 205, L8-L10 (1988)
+ * Borkowski's formula is derived from eclipses going back to 2137 BC
+ * and uses lunar position based on tidal coefficient of -23.9 arcsec/cy^2.
+ *
  * Chapront-Touze, Michelle, and Jean Chapront, _Lunar Tables
  * and Programs from 4000 B.C. to A.D. 8000_, Willmann-Bell 1991
+ * Their table agrees with the one here, but the entries are
+ * rounded to the nearest whole second.
  *
  * Stephenson, F. R., and M. A. Houlden, _Atlas of Historical
  * Eclipse Maps_, Cambridge U. Press (1986)
- *
  */
 
 #include "kep.h"
 
 /* If the following number (read from the file aa.ini)
- * is nonzero, then the program will return it for delta T
+ * is nonzero, then the program will return it
  * and not calculate anything.
  */
 double dtgiven = 0.0;
 extern double dtgiven;
-double deltat_value;
+
 
 #define DEMO 0
 #define TABSTART 1620
-#define TABEND 2011
+#define TABEND 2013
 #define TABSIZ (TABEND - TABSTART + 1)
 
-/* Morrison and Stephenson (2004)
-   This table covers -1000 through 1700 in 100-year steps.
-   Values are in whole seconds.
-   Estimated standard error at -1000 is 640 seconds; at 1600, 20 seconds.
-   The first value in the table has been adjusted 28 sec for
-   continuity with their long-term quadratic extrapolation formula.
-   The last value in this table agrees with the AA table at 1700,
-   so there is no discontinuity at either endpoint.  */
-#define MS_SIZ 28
-short m_s[MS_SIZ] = {
-/* -1000 to -100 */
- 25428, 23700, 22000, 21000, 19040, 17190, 15530, 14080, 12790, 11640,
-/* 0 to 900 */
- 10580, 9600, 8640, 7680, 6700, 5710, 4740, 3810, 2960, 2200,
-/* 1000 to 1700 */
- 1570, 1090, 740, 490, 320, 200, 120, 9,
-};
-
-
-/*    Entries prior to 1955 in the following table are from
-      the 1984 Astronomical Almanac and assume ndot = -26.0.
-      For dates prior to 1700, the above table is used instead of this one. */
+/* Note, Stephenson and Morrison's table starts at the year 1630.
+ * The Chapronts' table does not agree with the Almanac prior to 1630.
+ * The actual accuracy decreases rapidly prior to 1780.
+ */
 short dt[TABSIZ] = {
 /* 1620.0 thru 1659.0 */
 12400, 11900, 11500, 11000, 10600, 10200, 9800, 9500, 9100, 8800,
@@ -125,11 +124,13 @@ short dt[TABSIZ] = {
  2915, 2957, 2997, 3036, 3072, 3107, 3135, 3168, 3218, 3268,
  3315, 3359, 3400, 3447, 3503, 3573, 3654, 3743, 3829, 3920,
  4018, 4117, 4223, 4337, 4449, 4548, 4646, 4752, 4853, 4959,
-/* 1980.0 thru 2011.0 */
+/* 1980.0 thru 2003.0 */
  5054, 5138, 5217, 5296, 5379, 5434, 5487, 5532, 5582, 5630,
  5686, 5757, 5831, 5912, 5998, 6078, 6163, 6230, 6297, 6347,
- 6383, 6409, 6430, 6447, 6457, 6469, 6485, 6515, 6546, 6578,
- 6607, 6632,
+ 6383, 6409, 6430, 6447,
+/* Extrapolated values */
+                         6456, 6600, 6700, 6800, 6900, 7000,
+ 7100, 7200, 7300, 7400,
 };
 
 
@@ -142,86 +143,54 @@ int d[6];
 int i, iy, k;
 
 if( dtgiven != 0.0 )
-{
-    deltat_value = dtgiven;
-	return dtgiven;
-}
+	return( dtgiven );
 
 if( Y > TABEND )
-{
-    /* Extrapolate future values beyond the lookup table.  */
-    if (Y > (TABEND + 100.0))
-    {
-        /* Morrison & Stephenson (2004) long-term curve fit.  */
-        B = 0.01 * (Y - 1820.0);
-        ans = 32.0 * B * B - 20.0;
-    }
-    else
-    {
-        double a, b, c, d, m0, m1;
-
-        /* Cubic interpolation between last tabulated value
-           and long-term curve evaluated at 100 years later.  */
-
-        /* Last tabulated delta T value. */
-        a = 0.01 * dt[TABSIZ-1];
-        /* Approximate slope in past 10 years. */
-        b = 0.001 * (dt[TABSIZ-1] - dt[TABSIZ - 11]);
-
-        /* Long-term curve 100 years hence. */
-        B = 0.01 * (TABEND + 100.0 - 1820.0);
-        m0 = 32.0 * B*B - 20.0;
-        /* Its slope. */
-        m1 = 0.64 * B;
-
-        /* Solve for remaining coefficients of an interpolation polynomial
-           that agrees in value and slope at both ends of the 100-year
-           interval. */
-        d = 2.0e-6 * (50.0 * (m1 + b) - m0 + a);
-        c = 1.0e-4 * (m0 - a - 100.0 * b - 1.0e6 * d);
-
-        /* Note, the polynomial coefficients do not depend on Y.
-           A given tabulation and long-term formula
-           determine the polynomial.
-           Thus, for the IERS table ending at 2011.0, the coefficients are
-           a = 66.32
-           b = 0.223
-           c = 0.03231376
-           d = -0.0001607784
-        */
-
-        /* Compute polynomial value at desired time. */
-        p = Y - TABEND;
-        ans = a + p * (b  + p * (c + p * d));
-    }
-    return ans;
-}
-
-
-/* Use Morrison and Stephenson (2004) prior to the year 1700.  */
-if( Y < 1700.0 )
-{
-    if (Y <= -1000.0)
-    {
-        /* Morrison and Stephenson long-term fit.  */
-        B = 0.01 * (Y - 1820.0);
-        ans = 32.0 * B * B - 20.0;
-    }
-    else
-    {
-        /* Morrison and Stephenson recommend linear interpolation
-           between tabulations. */
-        iy = Y;
-        iy = (iy + 1000) / 100;  /* Integer index into the table. */
-        B = -1000 + 100 * iy;    /* Starting year of tabulated interval.  */
-        p = m_s[iy];
-        ans = p + 0.01 * (Y - B) * (m_s[iy + 1] - p);
-    }
+	{
+#if 0
+/* Morrison, L. V. and F. R. Stephenson, "Sun and Planetary System"
+ * vol 96,73 eds. W. Fricke, G. Teleki, Reidel, Dordrecht (1982)
+ */
+	B = 0.01*(Y-1800.0) - 0.1;
+	ans = -15.0 + 32.5*B*B;
 	return(ans);
-}
+#else
+/* Extrapolate forward by a second-degree curve that agrees with
+   the most recent data in value and slope, and vaguely fits
+   over the past century.  This idea communicated by Paul Muller,
+   who says NASA used to do something like it.  */
+	B = Y - TABEND;
+	/* slope */
+	p = dt[TABSIZ-1] - dt[TABSIZ-2];
+	/* square term */
+	ans = (dt[TABSIZ - 101] - (dt[TABSIZ - 1] - 100.0 * p)) * 1e-4;
+        ans = 0.01 * (dt[TABSIZ-1] + p * B + ans * B * B);
+	if( prtflg )
+	  printf("[extrapolated deltaT] ");
+	return(ans);
+#endif
+	}
 
-/* Besselian interpolation between tabulated values
- * in the telescopic era.
+if( Y < TABSTART )
+	{
+	if( Y >= 948.0 )
+		{
+/* Stephenson and Morrison, stated domain is 948 to 1600:
+ * 25.5(centuries from 1800)^2 - 1.9159(centuries from 1955)^2
+ */
+		B = 0.01*(Y - 2000.0);
+		ans = (23.58 * B + 100.3)*B + 101.6;
+		}
+	else
+		{
+/* Borkowski */
+		B = 0.01*(Y - 2000.0)  +  3.75;
+		ans = 35.0 * B * B  +  40.;
+		}
+	return(ans);
+	}
+
+/* Besselian interpolation from tabulated values.
  * See AA page K11.
  */
 
@@ -295,12 +264,6 @@ printf( "B %.4lf, ans %.4lf\n", B, ans );
 #endif
 
 done:
-
-ans *= 0.01;
-
-
-#if 0 /* ndot = -26.0 assumed; no correction. */
-
 /* Astronomical Almanac table is corrected by adding the expression
  *     -0.000091 (ndot + 26)(year-1955)^2  seconds
  * to entries prior to 1955 (AA page K8), where ndot is the secular
@@ -309,6 +272,7 @@ ans *= 0.01;
  * Entries after 1955 are referred to atomic time standards and
  * are not affected by errors in Lunar or planetary theory.
  */
+ans *= 0.01;
 if( Y < 1955.0 )
 	{
 	B = (Y - 1955.0);
@@ -318,9 +282,6 @@ if( Y < 1955.0 )
 	ans += -0.000091 * (-23.8946 + 26.0) * B * B;
 #endif
 	}
-
-#endif /* 0 */
-
 return( ans );
 }
 
@@ -348,14 +309,12 @@ switch( jdflag )
 		break;
 	case 1:
 		TDT = JD;
-        deltat_value = deltat(T);
-		UT = TDT - deltat_value/86400.0;
+		UT = TDT - deltat(T)/86400.0;
 		jtocal(UT); /* display the other date */
 		break;
 	case 2:
 		UT = JD;
-        deltat_value = deltat(T);
-		TDT = UT + deltat_value/86400.0;
+		TDT = UT + deltat(T)/86400.0;
 		jtocal(TDT);
 		break;
 	}

@@ -1,0 +1,17 @@
+astronomical-almanac for Debian
+-------------------------------
+
+astronomical-almanac looks for its initialization information in three places:
+  
+  ./aa.ini
+  ~/.aa.ini
+  /etc/aa.ini
+
+You may want to adjust the default values in the site-wide file
+/etc/aa.ini, or else make a local copy and make changes there.
+
+The example files conjunct and moonrise had their inputs compiled in.
+I have adapted conjunct to accept them from the command line.  I plan
+the same for moonrise.
+
+ -- James R. Van Zandt <jrv@debian.org>, Mon,  4 Sep 2006 20:48:20 -0400

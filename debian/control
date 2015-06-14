@@ -1,0 +1,35 @@
+Source: astronomical-almanac
+Section: science
+Priority: optional
+Maintainer: James R. Van Zandt <jrv@debian.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.8.0
+Homepage: http://www.moshier.net/
+
+Package: astronomical-almanac
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: astronomical almanac - calculate planet and star positions
+ The aa program computes the orbital positions of planetary bodies and
+ performs rigorous coordinate reductions to apparent geocentric and
+ topocentric place (local altitude and azimuth).  It also reduces star
+ catalogue positions given in either the FK4 or FK5 system.  Data for
+ the 57 navigational stars is included.  Most of the algorithms
+ employed are from The Astronomical Almanac (AA) published by the
+ U.S. Government Printing Office.
+ .
+ The aa program follows the rigorous algorithms for reduction of
+ celestial coordinates exactly as laid out in current editions of
+ the Astronomical Almanac.  The reduction to apparent geocentric
+ place has been checked by a special version of the program (aa200)
+ that takes planetary positions directly from the Jet Propulsion
+ Laboratory DE200 numerical integration of the solar system. The
+ results agree exactly with the Astronomical Almanac tables from
+ 1987 onward (earlier Almanacs used slightly different reduction
+ methods).
+ .
+ Certain computations, such as the correction for nutation,
+ are not given explicitly in the AA but are referenced there. In
+ these cases the program performs the full computations that are
+ used to construct the Almanac tables (references are provided).
+

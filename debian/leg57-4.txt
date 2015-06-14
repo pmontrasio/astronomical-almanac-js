@@ -1,0 +1,91 @@
+OK, here's Leg 57 warts and all.
+**********************
+Chart(s): Plotting Sheet
+
+Sight Reduction and
+Dead-Reckoning problem     Leg 57  080599   Test your knowledge!
+----------------------     ------  ------   --------------------
+
+The last FIX position was (51d 30.0'S  80d 59.5'W) 24/03/1999 @
+00:10:23UT, TC 119.3d, Var 18dE, Dev 2.5dW. Speed 10.3 Kts. Current
+Drift 1.0 Kts Set 115d. The weather has moderated, we have broken
+clouds, and a clear horizon. We are bound for Cape Horn (56d 04.0'S
+67d 15.0'W). We are now using chart INT 20 and the Pilot Chart of The
+South Atlantic, NVPUB 105.
+
+The following evening after our last FIX we take the following sights:
+
+    Body                UT          Hs
+
+    Moon LL             23:40:01    15d 04.9'
+    Rigil Kentaurus     23:41:56    35d 14.8'
+    Acrux               23:42:06    48d 40.2'
+    Aldebaran           23:43:12    13d 51.6'
+    Peacock             23:45:22    22d 24.8'
+
+1)  What is the DR position at the time of the first sight?
+--  -------------------------------------------------------
+
+2)  What is the FIX position?
+--  -------------------------
+
+3)  What was the Speed Made Good(SMG) between fixes?
+--  ------------------------------------------------
+
+Var 19dE, Dev 2.5dW. Speed 10.3Kts, Current 0.8 Kts, Set 115.0d.
+
+4)  What is the Zone Time(ZT) and Date Expected Time of Arrival(ETA)
+    to abeam of Cape Horn?
+--  --------------------------------------------------------------
+
+5)  What is the distance to Cape Horn from our FIX?
+--  -----------------------------------------------
+
+6)  What is the Compass Course(CC)/Course-to-Steer for Cape Horn?
+--  -------------------------------------------------------------
+
+After sighting a dark low gray non-descript island abeam, Cape Horn.
+We break out a bottle of Champagne and celebrate.
+
+We set a course for a waypoint at(55d 30.0'S  63d.00.0'W). At which time
+we must decide to either turn north up the South Atlantic Ocean west of
+the Falkland Islands or go around outside to the east of them. The
+weather will make our choice at the time. Speed 10.3 Kts, Var 14dE,
+Dev 2.0dW, Current Set 45d, Drift 0.8 Kts/day.
+
+7)  What is the TC and distance to the decision waypoint?
+--  -----------------------------------------------------
+
+8)  What is the Compass course(CC)/Course-to-Steer to the waypoint?
+--  ---------------------------------------------------------------
+
+NOTE:
+Lat & Lo = XXd XX.X', Date=DD/MM/YY, HE 9 Feet, Index correction
+-2.5', Time hh:mm:ss in UT,unless otherwise stated. Silicon
+Sea II is a 34,000 lb(15.40t) displacement sailing vessel, 48' 3"
+(14.70m) LOA. 39' (12.00m) LWL; Cutter rigged. Can tack to 45d.
+Water Tanks = 220 gal(1000 ltrs). Fuel Tanks = 155 gal(700 ltrs).
+Fuel consumption .675 gal/Hr at 8.5 Kts. DR(Ded-Reckoning)=position
+by sailings, EP(Estimated Position)=DR+current affect. Dist to
+Horizon: Nmi = SQRT HE@mtrs x 2.07; Nmi = SQRT HE@ft x 1.17.
+
+PLEASE respond with your results and thinking on these exercises to
+the NAVIGATION list at large. If you have questions or problems, A
+lot of folks on the list are knowledgeable and willing to help. Any
+questions or doubtful areas will be responded to promptly. Let us
+hear from you soon!
+
+Good Navigating!
+
+   -=The Navigation List Working Group=-
+
+        Peter Smith  - PSmith@IMPS0014.US.DG.COM
+        John Simmonds- johnsimmo@bigpond.com
+        Jim Manzari  - manzari@bluewin.ch
+        Dan Hogan    - dhhogan@nav.cnchost.com
+
+Dan Hogan WA6PBY
+dhhogan@nav.cnchost.com
+http://nav.cnchost.com
+Catalina 27 "GACHA"
+

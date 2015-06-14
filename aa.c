@@ -37,7 +37,7 @@ double J1900 = 2415020.0;	/* 1900 January 0, 12h UT */
  */
 #include "kep.h"
 
-#ifdef __BORLANDC__
+#if __BORLANDC__ || __STDC__
 #include <stdlib.h>
 #endif
 
@@ -299,7 +299,6 @@ double FAR eapolar[3];
 double JD;
 double TDT;
 double UT;
-extern double deltat_value;
 
 /* flag = 0 if TDT assumed = UT,
  *      = 1 if input time is TDT,
@@ -327,7 +326,7 @@ struct orbit *elobject;	/* pointer to orbital elements of object */
 
 /* Main program starts here.
  */
-int main(int argc, char* argv[])
+int main()
 {
 int i;
 
@@ -338,17 +337,20 @@ kinit();
 loop:
 
 prtflg = 1;
+printf( "Enter starting date of tabulation\n" );
+JD = zgetdate(); /* date */
+JD += gethms();	/* time of day */
+update(); /* find UT and ET */
+printf( "Julian day %.7f\n", JD );
+
+getnum( "Enter interval between tabulations in days", &djd, dblfmt );
+getnum( "Number of tabulations to display", &ntab, intfmt );
+if( ntab <= 0 )
+	ntab = 1;
 
 loop1:
-
-sscanf(argv[1], "%lf", &JD);
-printf("Julian date %f\n", JD);
-sscanf(argv[2], "%d", &objnum);
-printf("Object number %d\n", objnum);
-
-update();
-djd = 1.0;
-ntab = 1;
+getnum( "Planet number 0-9 or 88 to read star, 99 to read orbit",
+	&objnum, intfmt );
 
 switch(objnum)
 	{
@@ -385,7 +387,7 @@ switch(objnum)
 			break;
 	default:
 operr:		printf( "Operator error.\n" );
-		exit(0);
+		goto loop;
 	}
 
 if( elobject == (struct orbit *)&fstar )
@@ -412,6 +414,7 @@ for( i=0; i<ntab; i++ )
 	printf( "\n" );
 	JD += djd;
 	}
+goto loop;
 
 #ifdef _MSC_VER
 return 0;

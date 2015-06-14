@@ -1,0 +1,27 @@
+#!/bin/sh
+# (1) aa.que contains test questions.  To submit them to aa, type: 
+
+   aa < aa.que >test.ans
+
+# aa.ans has the corresponding answers (not necessarily true, but what
+# the program says)
+
+
+# (2) For another example, visit Steven Wepster's site:
+# 
+#    http://www.math.uu.nl/people/wepster/ldtab.html
+# 
+# Celestial navigation is normally done with the benefit of an accurate
+# clock.  However, the moon moves relatively quickly with respect to the
+# sun and stars, and it is possible to calculate the time from the
+# moon's position.  Steven Wepster has construct lunar distance tables
+# for this purpose using aa.  The site includes his discussion and the
+# tables themselves.
+
+
+# (3) A third example is using aa to work out a sample celestial
+# navigation problem, specifically leg 57 from the "silicon seas"
+# series (see: http://www.efalk.org/Navigation/).  The problem
+# parameters are in leg57-4.txt, the relevant aa output is in
+# leg57.log, and the calculation of the navigation fix is in
+# leg57.work

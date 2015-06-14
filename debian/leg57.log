@@ -1,0 +1,198 @@
+vanzandt:/usr/local/src/aa/astronomical-almanac-5.6/debian$ aa
+
+	Steve Moshier's Ephemeris Program v5.6
+
+Planetary and lunar positions approximate DE404.
+Terrestrial east longitude -74.6250 deg
+geocentric latitude -53.4541 deg
+Earth radius 0.99783
+temperature 12.0 C
+pressure 1010 mb
+Input time is UT.
+Enter starting date of tabulation
+Calendar date: Year (1986) ? 1999
+Month (1-12) (1) ? 3
+Day.fraction (1.000000) ? 24
+Time: Hours (0) ? 23
+Minutes (0) ? 40
+Seconds (0.000000) ? 01
+1999 March 24 Wednesday 23h 41m 04.563s  TDT
+1999 March 24 Wednesday 23h 40m 01.000s  UT
+Julian day 2451262.4861227
+Enter interval between tabulations in days (1.000000) ? 
+Number of tabulations to display (1) ? 
+Planet number 0-9 or 88 to read star, 99 to read orbit (0) ? 3
+
+                   The Moon
+
+JD 2451262.49,  1999 March 24 Wednesday 23h 41m 04.563s  TDT
+1999 March 24 Wednesday 23h 40m 01.000s  UT
+nutation dRA -0.821s dDec -5.53"
+Geometric lon 101.024 deg, lat -3.352 deg, rad 2.5111e-03 au
+Apparent geocentric longitude 101.020 deg   latitude -3.352 deg
+Distance 58.896 Earth-radii
+Horizontal parallax    0d 58' 22.34"  Semidiameter    0d 15' 54.26"  
+Elongation from sun 97.11 deg,  Illuminated fraction 0.56
+Phase 0.56 days past First Quarter
+    Apparent:  R.A.  6h 46m 45.615s  Declination   19d 38' 21.00"  
+Local apparent sidereal time   6h 49m 30.689s  
+diurnal aberration dRA 0.013s dDec 0.00"
+diurnal parallax dRA -1.787s dDec 3359.75"
+atmospheric refraction 0.057 deg  dRA 0.109s dDec -203.96"
+Topocentric:  Altitude 15.844 deg, Azimuth 359.324 deg
+Topocentric: R.A.  6h 46m 43.949s   Dec.   20d 30' 56.79"  
+local meridian transit 1999 March 24 Wednesday 23h 37m 09.464s  UT
+rises 1999 March 24 Wednesday 19h 24m 49.679s  UT
+sets 1999 March 25 Thursday  3h 49m 53.066s  UT
+Visible hours 8.4176
+
+Enter starting date of tabulation
+Calendar date: Year (1999) ? 
+Month (1-12) (3) ? 
+Day.fraction (24.000000) ? 
+Time: Hours (23) ? 
+Minutes (40) ? 41
+Seconds (1.000000) ? 56
+1999 March 24 Wednesday 23h 42m 59.563s  TDT
+1999 March 24 Wednesday 23h 41m 56.000s  UT
+Julian day 2451262.4874537
+Enter interval between tabulations in days (1.000000) ? 
+Number of tabulations to display (1) ? 
+Planet number 0-9 or 88 to read star, 99 to read orbit (3) ? 88
+Name of star catalogue file:  (/usr/share/aa/star.cat) ? 
+Line number (1) ? 38
+2000 14 39 35.885 -60 50  7.44 -49.826   69.93 -22.2 0.7516  -0.01 alCen(Rigil)        5483
+
+
+               alpha Centauri (Rigil)
+
+JD 2451262.49,  1999 March 24 Wednesday 23h 42m 59.563s  TDT
+1999 March 24 Wednesday 23h 41m 56.000s  UT
+approx. visual magnitude -0.0
+Astrometric J2000.0:  R.A.  14h 39m 36.331s  Dec.  - 60d 50' 08.50"  
+Astrometric B1950.0:  R.A.  14h 35m 46.918s  Dec.  - 60d 37' 14.33"  
+Astrometric of date:  R.A.  14h 39m 32.765s  Dec.  - 60d 49' 56.60"  
+elongation from sun 114.59 degrees, light defl. dRA -0.000s dDec 0.00"
+annual aberration dRA 2.070s dDec 5.85"
+nutation dRA -0.424s dDec 7.63"
+    Apparent:  R.A.  14h 39m 34.410s  Dec.  - 60d 49' 43.12"  
+Local apparent sidereal time   6h 51m 26.004s  
+diurnal aberration dRA -0.012s dDec 0.15"
+atmospheric refraction 0.023 deg  dRA -7.288s dDec -63.30"
+Topocentric:  Altitude 34.898 deg, Azimuth 148.048 deg
+Topocentric: R.A. 14h 39m 27.110s   Dec. - 60d 50' 46.27"  
+local meridian transit 1999 March 25 Thursday  7h 28m 47.751s  UT
+
+Enter starting date of tabulation
+Calendar date: Year (1999) ? 
+Month (1-12) (3) ? 
+Day.fraction (24.000000) ? 
+Time: Hours (23) ? 
+Minutes (41) ? 42
+Seconds (56.000000) ? 06
+1999 March 24 Wednesday 23h 43m 09.563s  TDT
+1999 March 24 Wednesday 23h 42m 06.000s  UT
+Julian day 2451262.4875694
+Enter interval between tabulations in days (1.000000) ? 
+Number of tabulations to display (1) ? 
+Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? 
+Name of star catalogue file:  (/usr/share/aa/star.cat) ? 
+Line number (38) ? 30
+2000 12 26 35.871 -63 05 56.58  -0.524   -1.21 -11.0 0.0000   1.58 al-1Cru(Acrux)      2745
+
+
+               alpha-1 Crucis (Acrux)
+
+JD 2451262.49,  1999 March 24 Wednesday 23h 43m 09.563s  TDT
+1999 March 24 Wednesday 23h 42m 06.000s  UT
+approx. visual magnitude 1.6
+Astrometric J2000.0:  R.A.  12h 26m 35.875s  Dec.  - 63d 05' 56.57"  
+Astrometric B1950.0:  R.A.  12h 23m 47.794s  Dec.  - 62d 49' 20.42"  
+Astrometric of date:  R.A.  12h 26m 33.261s  Dec.  - 63d 05' 41.17"  
+elongation from sun 118.41 degrees, light defl. dRA -0.000s dDec 0.00"
+annual aberration dRA 2.774s dDec -2.70"
+nutation dRA 0.105s dDec 5.19"
+    Apparent:  R.A.  12h 26m 36.139s  Dec.  - 63d 05' 38.68"  
+Local apparent sidereal time   6h 51m 36.031s  
+diurnal aberration dRA 0.003s dDec 0.17"
+atmospheric refraction 0.014 deg  dRA -6.701s dDec -23.67"
+Topocentric:  Altitude 48.373 deg, Azimuth 137.391 deg
+Topocentric: R.A. 12h 26m 29.441s   Dec. - 63d 06' 02.18"  
+local meridian transit 1999 March 25 Thursday  5h 16m 11.256s  UT
+
+Enter starting date of tabulation
+Calendar date: Year (1999) ? 
+Month (1-12) (3) ? 
+Day.fraction (24.000000) ? 
+Time: Hours (23) ? 
+Minutes (42) ? 43
+Seconds (6.000000) ? 12
+1999 March 24 Wednesday 23h 44m 15.563s  TDT
+1999 March 24 Wednesday 23h 43m 12.000s  UT
+Julian day 2451262.4883333
+Enter interval between tabulations in days (1.000000) ? 
+Number of tabulations to display (1) ? 
+Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? 
+Name of star catalogue file:  (/usr/share/aa/star.cat) ? 
+Line number (30) ? 10
+2000 04 35 55.237  16 30 33.39   0.439  -18.97  54.0 0.0480   0.85 alTau(Aldebara)      629
+
+
+               alpha Tauri (Aldebara)
+
+JD 2451262.49,  1999 March 24 Wednesday 23h 44m 15.563s  TDT
+1999 March 24 Wednesday 23h 43m 12.000s  UT
+approx. visual magnitude 0.8
+Astrometric J2000.0:  R.A.   4h 35m 55.231s  Dec.    16d 30' 33.53"  
+Astrometric B1950.0:  R.A.   4h 33m 03.134s  Dec.    16d 24' 28.21"  
+Astrometric of date:  R.A.   4h 35m 52.566s  Dec.    16d 30' 27.97"  
+elongation from sun 66.00 degrees, light defl. dRA 0.000s dDec 0.00"
+annual aberration dRA -0.539s dDec -2.94"
+nutation dRA -0.721s dDec -7.73"
+    Apparent:  R.A.   4h 35m 51.307s  Dec.    16d 30' 17.30"  
+Local apparent sidereal time   6h 52m 42.212s  
+diurnal aberration dRA 0.011s dDec 0.03"
+atmospheric refraction 0.064 deg  dRA 5.532s dDec -217.58"
+Topocentric:  Altitude 14.028 deg, Azimuth 326.254 deg
+Topocentric: R.A.  4h 35m 56.850s   Dec.   16d 26' 39.75"  
+local meridian transit 1999 March 24 Wednesday 21h 26m 43.529s  UT
+rises 1999 March 24 Wednesday 16h 58m 03.022s  UT
+sets 1999 March 25 Thursday  1h 55m 24.009s  UT
+Visible hours 8.9558
+
+Enter starting date of tabulation
+Calendar date: Year (1999) ? 
+Month (1-12) (3) ? 
+Day.fraction (24.000000) ? 
+Time: Hours (23) ? 
+Minutes (43) ? 45
+Seconds (12.000000) ? 22
+1999 March 24 Wednesday 23h 46m 25.563s  TDT
+1999 March 24 Wednesday 23h 45m 22.000s  UT
+Julian day 2451262.4898380
+Enter interval between tabulations in days (1.000000) ? 
+Number of tabulations to display (1) ? 
+Planet number 0-9 or 88 to read star, 99 to read orbit (88) ? 
+Name of star catalogue file:  (/usr/share/aa/star.cat) ? 
+Line number (10) ? 52
+2000 20 25 38.852 -56 44  6.38   0.082   -8.91   2.0 0.0000   1.94 alPav(Peacock)      9674
+
+
+               alpha Pavonis (Peacock)
+
+JD 2451262.49,  1999 March 24 Wednesday 23h 46m 25.563s  TDT
+1999 March 24 Wednesday 23h 45m 22.000s  UT
+approx. visual magnitude 1.9
+Astrometric J2000.0:  R.A.  20h 25m 38.851s  Dec.  - 56d 44' 06.31"  
+Astrometric B1950.0:  R.A.  20h 21m 42.396s  Dec.  - 56d 53' 54.26"  
+Astrometric of date:  R.A.  20h 25m 35.205s  Dec.  - 56d 44' 15.51"  
+elongation from sun 74.06 degrees, light defl. dRA -0.001s dDec -0.00"
+annual aberration dRA -1.254s dDec 8.72"
+nutation dRA -1.446s dDec 2.65"
+    Apparent:  R.A.  20h 25m 32.505s  Dec.  - 56d 44' 04.14"  
+Local apparent sidereal time   6h 54m 52.568s  
+diurnal aberration dRA -0.021s dDec -0.06"
+atmospheric refraction 0.040 deg  dRA 4.295s dDec -138.92"
+Topocentric:  Altitude 21.955 deg, Azimuth 193.170 deg
+Topocentric: R.A. 20h 25m 36.778s   Dec. - 56d 46' 23.12"  
+local meridian transit 1999 March 24 Wednesday 13h 17m 45.039s  UT

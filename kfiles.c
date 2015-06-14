@@ -3,7 +3,7 @@
  * or file containing orbital elements.
  */
 
-#if __BORLANDC__
+#if __BORLANDC__ || __STDC__
 #include <stdlib.h>
 #endif
 
@@ -26,8 +26,8 @@ FILE *fincat();
 
 extern char *intfmt, *strfmt;/* see dms.c */
 
-static char starnam[80] = {'s','t','a','r','.','c','a','t','\0'};
-static char orbnam[80] = {'o','r','b','i','t','.','c','a','t','\0'};
+static char starnam[80] = "/usr/share/aa/star.cat";
+static char orbnam[80] = "/usr/share/aa/orbit.cat";
 static int linenum = 1;
 
 /* Read initialization file aa.ini
@@ -51,8 +51,8 @@ double atpress = 1013.0; /* atmospheric pressure, millibars */
 /* Distance from observer to center of earth, in earth radii
  */
 double trho = 0.9985;
-double flat = 298.257222;
-double height = 0.0;
+static double flat = 298.257222;
+static double height = 0.0;
 
 /* Constants used elsewhere. These are DE403 values. */
 double aearth = 6378137.;  /* Radius of the earth, in meters.  */
@@ -73,8 +73,19 @@ char s[84];
 printf( "\n\tSteve Moshier's Ephemeris Program v5.6\n\n" );
 printf( "Planetary and lunar positions approximate DE404.\n" );
 
-f = fopen( "aa.ini", "r" );
-if( f )
+{
+   char *t = getenv("HOME");
+   strcpy(s, "aa.ini");
+   if (t && strlen(t)<70) 
+     {
+       strcpy(s,t);
+       strcat(s,"/.aa.ini");
+     }
+}
+
+if( (f=fopen("aa.ini","r")) ||
+    (f=fopen(s,"r")) ||
+    (f=fopen("/etc/aa.ini","r")) )
 	{
 	fgets( s, 80, f );
 	sscanf( s, "%lf", &tlong );
