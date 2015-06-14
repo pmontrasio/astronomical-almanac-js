@@ -41,7 +41,7 @@ moonrise: moonrise.o $(OBJS) $(INCS)
 moonrise.o: moonrise.c $(INCS)
 
 planet: $(PLANET_OBJS) $(INCS)
-	$(CC) -o planet.html $(PLANET_CFLAGS) $(PLANET_OBJS) -lm
+	$(CC) -o planet.js $(PLANET_CFLAGS) $(PLANET_OBJS) -lm
 
 planet.o: planet.c $(INCS)
 
