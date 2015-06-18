@@ -1,7 +1,13 @@
 #CC= gcc
 CC= emcc
 #CFLAGS=  -O2 -Wall
-CFLAGS=  -O2 --closure 1 -s MODULARIZE=1 --emit-symbol-map
+
+# for the browser
+#CFLAGS=  -O2 --closure 1 -s MODULARIZE=1 --emit-symbol-map
+
+# for node
+CFLAGS=  -O2 --closure 1 --emit-symbol-map
+
 PLANET_CFLAGS = -O2 --closure 1 -s EXPORTED_FUNCTIONS="['_km_to_planet']"
 #CFLAGS=  -g -Wall
 OBJS = altaz.o angles.o annuab.o constel.o deflec.o deltat.o diurab.o \
