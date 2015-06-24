@@ -35,6 +35,8 @@ In the browser
     var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
     console.log(kmToPlanet(now, 4)); // Earth to Mars
 
+A live example: http://connettiva.eu/newton (source at [newton-says](https://github.com/pmontrasio/newton-says))
+
 From the command line
 
     $ node planet-node.js $(node julian_day.js) 4  # Earth to Mars
