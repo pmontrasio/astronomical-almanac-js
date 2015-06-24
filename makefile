@@ -1,15 +1,11 @@
-#CC= gcc
 CC= emcc
-#CFLAGS=  -O2 -Wall
-
-# for the browser
-#CFLAGS=  -O2 --closure 1 -s MODULARIZE=1 --emit-symbol-map
 
 # for node
-CFLAGS=  -O2 --closure 1 --emit-symbol-map
+NODE_CFLAGS=  -O2 --closure 1 --emit-symbol-map
 
-PLANET_CFLAGS = -O2 --closure 1 -s EXPORTED_FUNCTIONS="['_km_to_planet']"
-#CFLAGS=  -g -Wall
+# for the browser
+BROWSER_CFLAGS = -O2 --closure 1 --emit-symbol-map -s MODULARIZE=1 -s EXPORTED_FUNCTIONS="['_km_to_planet']"
+
 OBJS = altaz.o angles.o annuab.o constel.o deflec.o deltat.o diurab.o \
 diurpx.o dms.o epsiln.o fk4fk5.o kepler.o kfiles.o lightt.o lonlat.o \
 nutate.o precess.o refrac.o rplanet.o rstar.o sidrlt.o sun.o domoon.o \
@@ -27,27 +23,34 @@ INCS = kep.h plantbl.h
 
 all: aa conjunct moonrise planet
 
+clean:
+	rm -f *.o aa aa.html aa.html.mem aa.js aa.js.mem aa.js.symbols \
+	conjunct conjunct.js conjunct.js.mem conjunct.js.symbols conjunct.html conjunct.html.mem \
+	moonrise moonrise.js moonrise.js.mem moonrise.js.symbols moonrise.html moonrise.html.mem \
+	planet planet.js planet.js planet.js.mem planet.js.symbols \
+	planet-node.js planet-node.js.mem planet-node.js.symbols \
+	planet.html planet.html.mem
+
 consts.o: consts.c $(INC)
 
-aa: aa.o $(OBJS) $(INCS)
-	$(CC) $(CFLAGS) -o aa.js aa.o $(OBJS) -lm
-#	coff2exe aa
+aa: aa.o $(OBJS)
+	$(CC) $(NODE_CFLAGS) -o aa.js aa.o $(OBJS) -lm
 
 aa.o: aa.c $(INCS)
 
 conjunct: conjunct.o $(OBJS) $(INCS)
-	$(CC) $(CFLAGS) -o conjunct.js conjunct.o $(OBJS) -lm
-#	coff2exe conjunct
+	$(CC) $(NODE_CFLAGS) -o conjunct.js conjunct.o $(OBJS) -lm
 
 conjunct.o: conjunct.c $(INCS)
 
 moonrise: moonrise.o $(OBJS) $(INCS)
-	$(CC) $(CFLAGS) -o moonrise.js moonrise.o $(OBJS) -lm
+	$(CC) $(NODE_CFLAGS) -o moonrise.js moonrise.o $(OBJS) -lm
 
 moonrise.o: moonrise.c $(INCS)
 
 planet: $(PLANET_OBJS) $(INCS)
-	$(CC) $(CFLAGS) -o planet.js $(PLANET_CFLAGS) $(PLANET_OBJS) -lm
+	$(CC) $(NODE_CFLAGS) -o planet-node.js $(PLANET_OBJS) -lm
+	$(CC) $(BROWSER_CFLAGS) -o planet.js $(PLANET_OBJS) -lm
 
 planet.o: planet.c $(INCS)
 
