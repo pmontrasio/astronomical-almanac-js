@@ -1,6 +1,7 @@
-= astronomical-almanac-js
+astronomical-almanac-js
+=======================
 
-This is the port to asm.js of Debian's astronomical-almanac https://packages.debian.org/source/sid/astronomical-almanac
+This is the port to asm.js of Debian's [astronomical-almanac](https://packages.debian.org/source/sid/astronomical-almanac).
 
 The original license is GPL v2.0 and is found in the debian/ directory.
 This package is licensed under the same licence.
@@ -12,7 +13,8 @@ The changes made are:
 * The makefile generates JavaScript targets using emcc and modified CFLAGS
 * Added planet.js and planet-node.js targets. They wrap the algorithm that computes the distance between two planets. planet.js can be used in the browser using Module.cwrap and planet-node.js can be used from the command line.
 
-== Examples
+Examples
+--------
 
 In the browser
 
@@ -25,7 +27,8 @@ From the command line
 
     $ node planet-node.js $(node julian_day.js) 4  # Earth to Mars
 
-Available planet numbers:
+Available planet numbers
+------------------------
 
 * 1 Mercury
 * 2 Venus
