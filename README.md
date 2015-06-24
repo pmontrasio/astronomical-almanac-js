@@ -21,6 +21,7 @@ In the browser
     <script type="text/javascript" src="planet.js"></script>
 
     var kmToPlanet = Module().cwrap("km_to_planet", "number", ["number", "number"]);
+    var now = new Date().getTime() / 86400000 + 2440587.5; // Julian day
     console.log(kmToPlanet(now, 4)); // Earth to Mars
 
 From the command line
